@@ -80,7 +80,7 @@ function call_function($list_function = array()) {
         }
     }
 }
-
+ 
 function load_view($name, $data_send = array()) {
     global $data;
     $data = $data_send;
@@ -180,5 +180,3 @@ function get_template_part($name) {
         echo "Không tìm thấy {$path}";
     }
 }
-
-?>

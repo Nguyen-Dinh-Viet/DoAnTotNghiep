@@ -39,11 +39,11 @@ get_sidebar();
                 <div class="page-body">
                     <div class="row">
                         <div class="col-md-12">
-                            
+
                             <!-- Hover table card start -->
                             <div class="card">
                                 <div class="card-header">
-                                <a class ="btn btn-info" href="?mod=user&action=addUser">Thêm tài khoản mới</a>
+                                    <a class="btn btn-info" href="?mod=user&action=addUser">Thêm tài khoản mới</a>
                                     <!-- <span>use class <code>table-hover</code> inside table element</span> -->
                                     <div class="card-header-right">
                                         <ul class="list-unstyled card-option">
@@ -62,7 +62,6 @@ get_sidebar();
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>Họ và tên</th>
-                    
                                                     <th>Tài khoản</th>
                                                     <th>Số điện thoại</th>
                                                     <th>Giới tính</th>
@@ -73,40 +72,48 @@ get_sidebar();
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $i =1;
-                                                foreach($users as $item)
-                                                {
-                                                    ?>
-                                                    <tr>
+                                                $i = 1;
+                                                foreach ($users as $item) {
+                                                ?>
+                                                <tr>
                                                     <th scope="row"><?php echo $i ?></th>
-                                                    <td><?php echo $item['user_lname'] . " ". $item['user_mname'] . " " .$item['user_fname']  ?></td>
-                                                    
+                                                    <td><?php echo $item['user_lname'] . " " . $item['user_mname'] . " " . $item['user_fname']  ?>
+                                                    </td>
+
                                                     <td><?php echo $item['user_email'] ?></td>
                                                     <td><?php echo $item['user_contact'] ?></td>
                                                     <td><?php echo $item['gender'] ?></td>
-                                                    <td><?php if($item['user_role_id'] == 1 ) {echo "Admin";}; if ($item['user_role_id'] == 2) {
-                                                        echo "Cổ đông";
-                                                    }; if ($item['user_role_id'] == 3)
-                                                    {
-                                                        echo "Thành viên";
-                                                    }  
-                                                     ?></td>
-                                                    <td><?php if($item['activate'] == 1) { echo "Đã kích hoạt";}
-                                                        else {
-                                                            echo "Chưa kích hoạt";
-                                                        }
-                                                    ?></td>
+                                                    <td><?php if ($item['user_role_id'] == 1) {
+                                                                echo "Admin";
+                                                            };
+                                                            if ($item['user_role_id'] == 2) {
+                                                                echo "Cổ đông";
+                                                            };
+                                                            if ($item['user_role_id'] == 3) {
+                                                                echo "Thành viên";
+                                                            }
+                                                            ?></td>
+                                                    <td><?php if ($item['activate'] == 1) {
+                                                                echo "Đã kích hoạt";
+                                                            } else {
+                                                                echo "Chưa kích hoạt";
+                                                            }
+                                                            ?></td>
                                                     <td class="text-center">
-                                                    <a class="mr-2" title="Sửa" href="<?php echo $item['changeUser'] ?>"><i class="fa fa-pencil" aria-hidden="true" ></i></a>
-                                                    <a title="Xóa" href="<?php echo $item['deleteUser'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa!')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                        <a class="mr-2" title="Sửa"
+                                                            href="<?php echo $item['changeUser'] ?>"><i
+                                                                class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                        <a title="Xóa" href="<?php echo $item['deleteUser'] ?>"
+                                                            onclick="return confirm('Bạn có chắc chắn muốn xóa!')"><i
+                                                                class="fa fa-trash" aria-hidden="true"></i></a>
                                                     </td>
-                                                    </tr>
-                                                    <?php
-                                                    $i=$i+1;
+                                                </tr>
+                                                <?php
+                                                    $i = $i + 1;
                                                 }
                                                 ?>
-                                               
-                                                
+
+
                                             </tbody>
                                         </table>
                                     </div>

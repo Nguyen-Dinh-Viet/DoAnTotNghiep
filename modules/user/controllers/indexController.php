@@ -224,77 +224,70 @@ function changePasswordAction()
 {
     global $old_password, $new_password, $confirm_password, $error;
     if (isset($_POST['btn-update-pass'])) {
-    if (isset($_COOKIE['username'])) {
-        $email = $_COOKIE['username'];
-    } else {
-        $email = $_SESSION['user_login'];
-    }
-    $info_user = get_info_user_by_email($email);
-    if (empty($_POST['old_password'])) {
-        $error['old_password'] = "Bạn không được để trống mật khẩu!";
-    } else {
-        if (!(strlen($_POST['old_password']) >= 6 && strlen($_POST['old_password']) <= 32)) {
-            $error['old_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+        if (isset($_COOKIE['username'])) {
+            $email = $_COOKIE['username'];
         } else {
-            // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
-            if (!is_password($_POST['old_password'])) {
-                $error['old_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
-            } else 
-            {
-                $old_password = md5($_POST['old_password']);
-            // md5($_POST['password']);
-                if(!check_password($old_password,$email))
-                {
-                    $error['old_password'] = "Mật khẩu cũ không chính xác!";
+            $email = $_SESSION['user_login'];
+        }
+        $info_user = get_info_user_by_email($email);
+        if (empty($_POST['old_password'])) {
+            $error['old_password'] = "Bạn không được để trống mật khẩu!";
+        } else {
+            if (!(strlen($_POST['old_password']) >= 6 && strlen($_POST['old_password']) <= 32)) {
+                $error['old_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+            } else {
+                // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+                if (!is_password($_POST['old_password'])) {
+                    $error['old_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
+                } else {
+                    $old_password = md5($_POST['old_password']);
+                    // md5($_POST['password']);
+                    if (!check_password($old_password, $email)) {
+                        $error['old_password'] = "Mật khẩu cũ không chính xác!";
+                    }
                 }
-                
             }
-            
-
         }
-    }
-    if (empty($_POST['new_password'])) {
-        $error['new_password'] = "Bạn không được để trống mật khẩu mới!";
-    } else {
-        if (!(strlen($_POST['new_password']) >= 6 && strlen($_POST['new_password']) <= 32)) {
-            $error['new_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+        if (empty($_POST['new_password'])) {
+            $error['new_password'] = "Bạn không được để trống mật khẩu mới!";
         } else {
-            // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
-            if (!is_password($_POST['new_password'])) {
-                $error['new_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
-            } else $new_password = md5($_POST['new_password']);
-            // md5($_POST['password']);
+            if (!(strlen($_POST['new_password']) >= 6 && strlen($_POST['new_password']) <= 32)) {
+                $error['new_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+            } else {
+                // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+                if (!is_password($_POST['new_password'])) {
+                    $error['new_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
+                } else $new_password = md5($_POST['new_password']);
+                // md5($_POST['password']);
 
+            }
         }
-    }
-    if (empty($_POST['confirm_password'])) {
-        $error['confirm_password'] = "Bạn không được để trống mật khẩu xác nhận!";
-    } else {
-        if (!(strlen($_POST['confirm_password']) >= 6 && strlen($_POST['confirm_password']) <= 32)) {
-            $error['confirm_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+        if (empty($_POST['confirm_password'])) {
+            $error['confirm_password'] = "Bạn không được để trống mật khẩu xác nhận!";
         } else {
-            // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
-            if (!is_password($_POST['confirm_password'])) {
-                $error['confirm_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
-            } else $confirm_password = md5($_POST['confirm_password']);
-            // md5($_POST['password']);
+            if (!(strlen($_POST['confirm_password']) >= 6 && strlen($_POST['confirm_password']) <= 32)) {
+                $error['confirm_password'] = "Mật khẩu từ 6 tới 32 kí tự";
+            } else {
+                // $partten="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+                if (!is_password($_POST['confirm_password'])) {
+                    $error['confirm_password'] = "Mật khẩu cho phép nhập kí tự A->Z a->z 0->9 _ bắt đầu bằng 1 kí tự in hoa và dùng các kí tự đặc biệt ";
+                } else $confirm_password = md5($_POST['confirm_password']);
+                // md5($_POST['password']);
 
+            }
         }
-    }
-    if($_POST['new_password'] != $_POST['confirm_password'])
-    {
-        $error['password'] = "Mật khảu mới và mật khẩu xác nhận không giống nhau!";
-    }
-    if(empty($error))
-    {
-        $data1 = array(
-            'user_password' => $new_password,
-        );
-        $where = "`user_email`='{$email}'";
-        db_update('users', $data1, $where);
+        if ($_POST['new_password'] != $_POST['confirm_password']) {
+            $error['password'] = "Mật khảu mới và mật khẩu xác nhận không giống nhau!";
+        }
+        if (empty($error)) {
+            $data1 = array(
+                'user_password' => $new_password,
+            );
+            $where = "`user_email`='{$email}'";
+            db_update('users', $data1, $where);
             echo "<script type='text/javascript' >alert('Cập nhật mật khẩu thành công!')</script>";
+        }
     }
-}
     load_view('changePassword');
 }
 
