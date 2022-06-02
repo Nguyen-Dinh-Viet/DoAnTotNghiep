@@ -15,7 +15,7 @@ date_default_timezone_set("Asia/Ho_Chi_Minh"); // thêm thời gian
  * 
  */
 
-$config['base_url'] = "http://localhost:8080/Accounting-Software";
+$config['base_url'] = "http://localhost:8080/DoAnTotNghiep";
 // $config['base_url'] = "http://localhost/003_Co_Hien/ke_toan/Accounting-Software";
 //  $config['base_url'] = "https://blackholemta.space";
 
