@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Phần mềm kế toán</title>
+    <title>Hệ thống quản lý bãi đỗ xe</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -117,7 +117,8 @@
                             </div>
                         </div>
                         <a href="?mod=home">
-                            <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+                            <!-- <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" /> -->
+                            <img class="img-fluid" src="assets/images/zyro-image.png" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -149,7 +150,7 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius" src="assets/images/KimDami.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">John Doe</h5>
                                                 <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -159,7 +160,7 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius" src="assets/images/like.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">Joseph William</h5>
                                                 <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -181,7 +182,7 @@
                             </li>
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <img src="assets/images/KimDami.jpg" class="img-radius" alt="User-Profile-Image">
                                     <span><?php $info = get_info_user(); echo($info["user_email"] ); ?></span>
                                     <i class="ti-angle-down"></i>
                                 </a>

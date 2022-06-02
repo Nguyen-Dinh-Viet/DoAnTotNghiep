@@ -9,7 +9,7 @@ function PageName()
 $current_page = PageName();
 function getListAccount()
 {
-    $list_account = db_fetch_array("SELECT ac.id as id, ac.name as name, ac.code as code, ac.bank as id_bank, ac.currency as id_currency, ba.name as bank_name, cu.name as currency_name, ac.amount as amount FROM `account` as ac LEFT JOIN `banks` as ba on ac.`bank` = ba.`id` LEFT JOIN `currency` as cu on ac.`currency` = cu.`id` WHERE ac.`ship` = '0'" );
+    $list_account = db_fetch_array("SELECT ac.id as id, ac.name as name, ac.code as code, ac.bank as id_bank, ac.currency as id_currency, ba.name as bank_name, cu.name as currency_name, ac.amount as amount FROM `account` as ac LEFT JOIN `banks` as ba on ac.`bank` = ba.`id` LEFT JOIN `currency` as cu on ac.`currency` = cu.`id` WHERE ac.`ship` = '0'");
     return $list_account;
 }
 $list_account = getListAccount();
@@ -22,10 +22,11 @@ $list_account = getListAccount();
             <div class="pcoded-inner-navbar main-menu">
                 <div class="">
                     <div class="main-menu-header">
-                        <img class="img-80 img-radius" src="assets/images/avatar-4.jpg" alt="User-Profile-Image">
+                        <img class="img-80 img-radius" src="assets/images/KimDami.jpg" alt="User-Profile-Image">
                         <div class="user-details">
                             <span id="more-details"><?php $info = get_info_user();
-                                                    echo ($info["user_email"]);  ?><i class="fa fa-caret-down"></i></span>
+                                                    echo ($info["user_email"]);  ?><i
+                                    class="fa fa-caret-down"></i></span>
                         </div>
                     </div>
                     <div class="main-menu-content">
@@ -47,6 +48,7 @@ $list_account = getListAccount();
                         </div>
                     </form>
                 </div>
+                <!-- THỐNG KÊ -->
                 <div class="pcoded-navigation-label">Thống kê</div>
                 <ul class="pcoded-item pcoded-left-item">
                     <li class="<?php if ($current_page == "" || $current_page == "?mod=home") {
@@ -59,18 +61,19 @@ $list_account = getListAccount();
                         </a>
                     </li>
                 </ul>
+                <!-- BÁO CÁO THU CHI -->
                 <div class="pcoded-navigation-label">Báo cáo</div>
                 <ul class="pcoded-item pcoded-left-item">
-                    <li class="pcoded-hasmenu  <?php if (strpos($current_page,"?mod=report")!==false) {
+                    <li class="pcoded-hasmenu  <?php if (strpos($current_page, "?mod=report") !== false) {
                                                     echo ("active pcoded-trigger");
-                                                }?>">
+                                                } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                             <span class="pcoded-mtext">Báo cáo</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                         <ul class="pcoded-submenu">
-                        <li class="<?php if ($current_page == "?mod=report&action=general") {
+                            <li class="<?php if ($current_page == "?mod=report&action=general") {
                                             echo ("active");
                                         } ?>">
                                 <a href="?mod=report&action=general" class="waves-effect waves-dark">
@@ -126,10 +129,74 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
+                    <!-- Danh sách xe -->
+                    <li class="pcoded-hasmenu  <?php if (strpos($current_page, "?mod=ListCar") !== false) {
+                                                    echo ("active pcoded-trigger");
+                                                } ?>">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-car" aria-hidden="true"></i><b>D</b></span>
+                            <span class="pcoded-mtext">Danh sách xe</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li class="<?php if ($current_page == "?mod=report&action=general") {
+                                            echo ("active");
+                                        } ?>">
+                                <a href="?mod=report&action=general" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext">Xe đang sử dụng</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="<?php if ($current_page == "?mod=report&action=index") {
+                                            echo ("active");
+                                        } ?>">
+                                <a href="?mod=report&action=index" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext">Danh sách hiện có</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="<?php if ($current_page == "?mod=report&action=revenueShip") {
+                                            echo ("active");
+                                        } ?>">
+                                <a href="?mod=report&action=revenueShip" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext">Danh sách trắng</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Danh sách thẻ -->
+                    <li class="pcoded-hasmenu  <?php if (strpos($current_page, "?mod=ListCard") !== false) {
+                                                    echo ("active pcoded-trigger");
+                                                } ?>">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="fa fa-address-card"
+                                    aria-hidden="true"></i><b>D</b></span>
+                            <span class="pcoded-mtext">Danh sách thẻ ra-vào</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li class="<?php if ($current_page == "?mod=card&action=listCard") {
+                                            echo ("active");
+                                        } ?>">
+                                <a href="?mod=card&action=listCard" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext">Danh sách thẻ ra-vào</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
+
+                <!-- QUẢN LÝ -->
                 <div class="pcoded-navigation-label">Quản lý</div>
                 <ul class="pcoded-item pcoded-left-item">
-                    <li class="pcoded-hasmenu <?php if (strpos($current_page,"?mod=ledgers&action=accountLedgers")!==false) {
+                    <li class="pcoded-hasmenu <?php if (strpos($current_page, "?mod=ledgers&action=accountLedgers") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -142,22 +209,24 @@ $list_account = getListAccount();
                             foreach ($list_account as $item) {
                                 # code...
                             ?>
-                                <li class="<?php if ($current_page == "?mod=ledgers&action=accountLedgers&id=".$item['id']) {
+                            <li class="<?php if ($current_page == "?mod=ledgers&action=accountLedgers&id=" . $item['id']) {
                                                 echo ("active");
                                             } ?>">
-                                    <a href="?mod=ledgers&action=accountLedgers&id=<?php echo $item['id'] ?>" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                        <span class="pcoded-mtext"><?php echo($item['name'].'-'.$item['bank_name']." (".$item['currency_name'].")") ?></span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
+                                <a href="?mod=ledgers&action=accountLedgers&id=<?php echo $item['id'] ?>"
+                                    class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span
+                                        class="pcoded-mtext"><?php echo ($item['name'] . '-' . $item['bank_name'] . " (" . $item['currency_name'] . ")") ?></span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
                             <?php
                             }
                             ?>
-                            
+
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=user&action=listUser" || $current_page == "?mod=user&action=addUser" || strpos($current_page,"?mod=user&action=changeUser")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=user&action=listUser" || $current_page == "?mod=user&action=addUser" || strpos($current_page, "?mod=user&action=changeUser") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -186,7 +255,7 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=ship&action=listShip" || $current_page == "?mod=ship&action=addShip" || strpos($current_page,"?mod=ship&action=changeShip")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=ship&action=listShip" || $current_page == "?mod=ship&action=addShip" || strpos($current_page, "?mod=ship&action=changeShip") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -224,7 +293,7 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=currency&action=listCurrency" || $current_page == "?mod=currency&action=addCurrency" || strpos($current_page,"?mod=currency&action=changeCurrency")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=currency&action=listCurrency" || $current_page == "?mod=currency&action=addCurrency" || strpos($current_page, "?mod=currency&action=changeCurrency") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -253,11 +322,12 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=bank&action=listBank" || $current_page == "?mod=bank&action=addBank" || strpos($current_page,"?mod=bank&action=changeBank")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=bank&action=listBank" || $current_page == "?mod=bank&action=addBank" || strpos($current_page, "?mod=bank&action=changeBank") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-university" aria-hidden="true"></i><b>D</b></span>
+                            <span class="pcoded-micon"><i class="fa fa-university"
+                                    aria-hidden="true"></i><b>D</b></span>
                             <span class="pcoded-mtext">Ngân hàng</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
@@ -282,11 +352,12 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=account&action=listAccount" || $current_page == "?mod=account&action=addAccount" || strpos($current_page,"?mod=account&action=changeAccount")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=account&action=listAccount" || $current_page == "?mod=account&action=addAccount" || strpos($current_page, "?mod=account&action=changeAccount") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-address-card" aria-hidden="true"></i><b>D</b></span>
+                            <span class="pcoded-micon"><i class="fa fa-address-card"
+                                    aria-hidden="true"></i><b>D</b></span>
                             <span class="pcoded-mtext">Tài khoản ngân hàng</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
@@ -311,7 +382,7 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
-                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=category&action=listCategory" || $current_page == "?mod=category&action=addCategory" || strpos($current_page,"?mod=category&action=changeCategory")!==false) {
+                    <li class="pcoded-hasmenu <?php if ($current_page == "?mod=category&action=listCategory" || $current_page == "?mod=category&action=addCategory" || strpos($current_page, "?mod=category&action=changeCategory") !== false) {
                                                     echo ("active pcoded-trigger");
                                                 } ?>">
                         <a href="javascript:void(0)" class="waves-effect waves-dark">

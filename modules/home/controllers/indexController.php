@@ -2,7 +2,7 @@
 
 function construct()
 {
-    load_model('index');
+    load_model('index'); 
 }
 function indexAction()
 {
@@ -37,4 +37,3 @@ function indexAction()
     load_view('index',$data);
 
 }
-?>

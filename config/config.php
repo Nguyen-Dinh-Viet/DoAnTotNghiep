@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 ob_start();
 date_default_timezone_set("Asia/Ho_Chi_Minh"); // thêm thời gian
@@ -22,16 +20,4 @@ $config['base_url'] = "http://localhost:8080/DoAnTotNghiep";
 $config['default_module'] = 'home';
 $config['default_controller'] = 'index';
 $config['default_action'] = 'index';
-
-
-
-
-
-
-
-
-
-
-
-
-
+?>

@@ -13,8 +13,8 @@ function addAccountAction()
 {
     $info['banks'] = get_list_bank();
     $info['currency'] = get_list_currency();
-    $info['ships'] = get_list_ship(); 
-    global $name_account, $code, $bank, $currency, $amount,$ships;
+    $info['ships'] = get_list_ship();
+    global $name_account, $code, $bank, $currency, $amount, $ships;
     if (isset($_POST['btn-submit'])) {
 
         $error = array();
@@ -46,14 +46,14 @@ function addAccountAction()
 
             $amount = $_POST['amount'];
         }
-        $ships =$_POST['ship'];
+        $ships = $_POST['ship'];
         if (empty($error)) {
             $data = array(
                 'name' => $name_account,
                 'code' => $code,
                 'bank' => $bank,
                 'currency' => $currency,
-                'amount' =>$amount,
+                'amount' => $amount,
                 'ship' => $ships,
             );
             db_insert('account', $data);
@@ -71,7 +71,7 @@ function changeAccountAction()
     $data['account'] = $info_account;
     $data['banks'] = get_list_bank();
     $data['currency'] = get_list_currency();
-    $data['ships'] = get_list_ship(); 
+    $data['ships'] = get_list_ship();
     global $name, $code, $bank, $currency, $amount;
     if (isset($_POST['btn-update'])) {
 
@@ -103,7 +103,7 @@ function changeAccountAction()
 
             $amount = $_POST['amount'];
         }
-        $ships =$_POST['ship'];
+        $ships = $_POST['ship'];
         if (empty($error)) {
             $data1 = array(
                 'name' => $name,
@@ -131,6 +131,5 @@ function changeAccountAction()
 // xóa ngân hàng
 function deleteAccountAction()
 {
-
     load_view('deleteAccount');
 }
