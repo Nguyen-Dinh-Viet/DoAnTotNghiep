@@ -191,6 +191,28 @@ $list_account = getListAccount();
                             </li>
                         </ul>
                     </li>
+
+                    <!-- Danh sách khách hàng -->
+                    <li class="pcoded-hasmenu  <?php if (strpos($current_page, "?mod=ListClient") !== false) {
+                                                    echo ("active pcoded-trigger");
+                                                } ?>">
+                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-user" aria-hidden="true"></i><b>D</b></span>
+                            <span class="pcoded-mtext">Danh sách Khách hàng</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li class="<?php if ($current_page == "?mod=client&action=listClient") {
+                                            echo ("active");
+                                        } ?>">
+                                <a href="?mod=client&action=listClient" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <span class="pcoded-mtext">Danh sách Khách hàng</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- QUẢN LÝ -->
