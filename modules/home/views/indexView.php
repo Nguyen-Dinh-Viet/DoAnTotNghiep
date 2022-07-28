@@ -1,9 +1,5 @@
-<?php
-get_header();
-?>
-<?php
-get_sidebar();
-?>
+<?php get_header(); ?>
+<?php get_sidebar(); ?>
 <script>
 setTimeout(function() {
     // Morris bar chart
@@ -179,13 +175,15 @@ setTimeout(function() {
 <div class="pcoded-content">
     <!-- Page-header start -->
     <div class="page-header">
-
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Trang chủ</h5>
-                        <p class="m-b-0">Hệ thống bãi đỗ xe có xác thực đa cấp</p>
+                        <!-- <video autoplay loop muted plays-inline class="back-video">
+                            <source src="assets/images/video.mp4" type="video/mp4">
+                        </video> -->
+                        <h5 class="m-b-10">Hệ thống bãi đỗ xe có xác thực đa cấp</h5>
+                        <p class="m-b-0">Trang chủ</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -193,7 +191,7 @@ setTimeout(function() {
                         <li class="breadcrumb-item">
                             <a href="?mod=home"> <i class="fa fa-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Thống kê</a>
+                        <li class="breadcrumb-item"><a href="?mod=home">Thống kê</a>
                         </li>
                     </ul>
                 </div>
@@ -215,7 +213,7 @@ setTimeout(function() {
                             <div class="card">
                                 <div class="card-header">
                                     <h5>Thống kê</h5>
-                                    <span>Tổng thu chi tiền VNĐ của công ty theo các tháng trong năm</span>
+                                    <span>Lưu lượng xe theo các ngày trong tuần</span>
                                 </div>
                                 <div class="card-block">
                                     <div id="chart-all-vnd"></div>
@@ -224,7 +222,7 @@ setTimeout(function() {
                         </div>
                         <!-- Bar Chart Ends -->
                         <!-- Bar Chart start -->
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h5>Thống kê</h5>
@@ -234,7 +232,7 @@ setTimeout(function() {
                                     <div id="chart-all-usd"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Bar Chart Ends -->
 
                     </div>
@@ -245,10 +243,7 @@ setTimeout(function() {
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
 
 
 <?php get_footer(); ?>

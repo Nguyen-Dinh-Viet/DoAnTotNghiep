@@ -438,6 +438,14 @@ code {
 	color: #fff;
 }
 
+.back-video{
+	position: absolute;
+	/* right: 0;
+	bottom: 0;
+	z-index: -1; */
+	padding: 35px 40px;
+}
+
 .page-header:before {
 	content: "";
 	background-color: rgba(0, 0, 0, 0.5);
