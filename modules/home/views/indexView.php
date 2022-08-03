@@ -4,167 +4,53 @@
 setTimeout(function() {
     // Morris bar chart
     Morris.Bar({
-        element: 'chart-all-vnd',
+        element: 'chart-all-car',
         data: [{
-            y: 'Tháng 1',
-            a: <?php if (isset($data_vnd[0]['Tháng 1'])) echo $data_vnd[0]['Tháng 1'];
+            y: 'Mon',
+            a: <?php if (isset($data_carIn[1]['XeVao'])) echo $data_carIn[1]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 1'])) echo $data_vnd[1]['Tháng 1'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 2',
-            a: <?php if (isset($data_vnd[0]['Tháng 2'])) echo $data_vnd[0]['Tháng 2'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 2'])) echo $data_vnd[1]['Tháng 2'];
+            b: <?php if (isset($data_carOut[1]['XeRa'])) echo $data_carOut[1]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 3',
-            a: <?php if (isset($data_vnd[0]['Tháng 3'])) echo $data_vnd[0]['Tháng 3'];
+            y: 'Tue',
+            a: <?php if (isset($data_carIn[2]['XeVao'])) echo $data_carIn[2]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 3'])) echo $data_vnd[1]['Tháng 3'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 4',
-            a: <?php if (isset($data_vnd[0]['Tháng 4'])) echo $data_vnd[0]['Tháng 4'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 4'])) echo $data_vnd[1]['Tháng 4'];
+            b: <?php if (isset($data_carOut[2]['XeRa'])) echo $data_carOut[2]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 5',
-            a: <?php if (isset($data_vnd[0]['Tháng 5'])) echo $data_vnd[0]['Tháng 5'];
+            y: 'Wed',
+            a: <?php if (isset($data_carIn[3]['XeVao'])) echo $data_carIn[3]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 5'])) echo $data_vnd[1]['Tháng 5'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 6',
-            a: <?php if (isset($data_vnd[0]['Tháng 6'])) echo $data_vnd[0]['Tháng 6'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 6'])) echo $data_vnd[1]['Tháng 6'];
+            b: <?php if (isset($data_carOut[3]['XeRa'])) echo $data_carOut[3]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 7',
-            a: <?php if (isset($data_vnd[0]['Tháng 7'])) echo $data_vnd[0]['Tháng 7'];
+            y: 'Thu',
+            a: <?php if (isset($data_carIn[4]['XeVao'])) echo $data_carIn[4]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 7'])) echo $data_vnd[1]['Tháng 7'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 8',
-            a: <?php if (isset($data_vnd[0]['Tháng 8'])) echo $data_vnd[0]['Tháng 8'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 8'])) echo $data_vnd[1]['Tháng 8'];
+            b: <?php if (isset($data_carOut[4]['XeRa'])) echo $data_carOut[4]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 9',
-            a: <?php if (isset($data_vnd[0]['Tháng 9'])) echo $data_vnd[0]['Tháng 9'];
+            y: 'Fri',
+            a: <?php if (isset($data_carIn[5]['XeVao'])) echo $data_carIn[5]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 9'])) echo $data_vnd[1]['Tháng 9'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 10',
-            a: <?php if (isset($data_vnd[0]['Tháng 10'])) echo $data_vnd[0]['Tháng 10'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 10'])) echo $data_vnd[1]['Tháng 10'];
+            b: <?php if (isset($data_carOut[5]['XeRa'])) echo $data_carOut[5]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 11',
-            a: <?php if (isset($data_vnd[0]['Tháng 11'])) echo $data_vnd[0]['Tháng 11'];
+            y: 'Sat',
+            a: <?php if (isset($data_carIn[6]['XeVao'])) echo $data_carIn[6]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 11'])) echo $data_vnd[1]['Tháng 11'];
+            b: <?php if (isset($data_carOut[6]['XeRa'])) echo $data_carOut[6]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tháng 12',
-            a: <?php if (isset($data_vnd[0]['Tháng 12'])) echo $data_vnd[0]['Tháng 12'];
+            y: 'Sun',
+            a: <?php if (isset($data_carIn[0]['XeVao'])) echo $data_carIn[0]['XeVao'];
                     else  echo ("0") ?>,
-            b: <?php if (isset($data_vnd[1]['Tháng 12'])) echo $data_vnd[1]['Tháng 12'];
+            b: <?php if (isset($data_carOut[0]['XeRa'])) echo $data_carOut[0]['XeRa'];
                     else  echo ("0") ?>,
         }],
         xkey: 'y',
         ykeys: ['a', 'b'],
-        labels: ['Thu', 'Chi'],
-        barColors: ['#04cc13', '#fe2f43'],
-        hideHover: 'auto',
-        gridLineColor: '#eef0f2',
-        resize: true
-    });
-
-    Morris.Bar({
-        element: 'chart-all-usd',
-        data: [{
-            y: 'Tháng 1',
-            a: <?php if (isset($data_usd[0]['Tháng 1'])) echo $data_usd[0]['Tháng 1'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 1'])) echo $data_usd[1]['Tháng 1'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 2',
-            a: <?php if (isset($data_usd[0]['Tháng 2'])) echo $data_usd[0]['Tháng 2'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 2'])) echo $data_usd[1]['Tháng 2'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 3',
-            a: <?php if (isset($data_usd[0]['Tháng 3'])) echo $data_usd[0]['Tháng 3'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 3'])) echo $data_usd[1]['Tháng 3'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 4',
-            a: <?php if (isset($data_usd[0]['Tháng 4'])) echo $data_usd[0]['Tháng 4'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 4'])) echo $data_usd[1]['Tháng 4'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 5',
-            a: <?php if (isset($data_usd[0]['Tháng 5'])) echo $data_usd[0]['Tháng 5'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 5'])) echo $data_usd[1]['Tháng 5'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 6',
-            a: <?php if (isset($data_usd[0]['Tháng 6'])) echo $data_usd[0]['Tháng 6'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 6'])) echo $data_usd[1]['Tháng 6'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 7',
-            a: <?php if (isset($data_usd[0]['Tháng 7'])) echo $data_usd[0]['Tháng 7'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 7'])) echo $data_usd[1]['Tháng 7'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 8',
-            a: <?php if (isset($data_usd[0]['Tháng 8'])) echo $data_usd[0]['Tháng 8'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 8'])) echo $data_usd[1]['Tháng 8'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 9',
-            a: <?php if (isset($data_usd[0]['Tháng 9'])) echo $data_usd[0]['Tháng 9'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 9'])) echo $data_usd[1]['Tháng 9'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 10',
-            a: <?php if (isset($data_usd[0]['Tháng 10'])) echo $data_usd[0]['Tháng 10'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 10'])) echo $data_usd[1]['Tháng 10'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 11',
-            a: <?php if (isset($data_usd[0]['Tháng 11'])) echo $data_usd[0]['Tháng 11'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 11'])) echo $data_usd[1]['Tháng 11'];
-                    else  echo ("0") ?>,
-        }, {
-            y: 'Tháng 12',
-            a: <?php if (isset($data_usd[0]['Tháng 12'])) echo $data_usd[0]['Tháng 12'];
-                    else  echo ("0") ?>,
-            b: <?php if (isset($data_usd[1]['Tháng 12'])) echo $data_usd[1]['Tháng 12'];
-                    else  echo ("0") ?>,
-        }],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Thu', 'Chi'],
+        labels: ['Vào', 'Ra'],
         barColors: ['#04cc13', '#fe2f43'],
         hideHover: 'auto',
         gridLineColor: '#eef0f2',
@@ -189,7 +75,7 @@ setTimeout(function() {
                 <div class="col-md-4">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="?mod=home"> <i class="fa fa-home"></i> </a>
+                            <a href="?mod=homes"> <i class="fa fa-home"></i> </a>
                         </li>
                         <li class="breadcrumb-item"><a href="?mod=home">Thống kê</a>
                         </li>
@@ -212,11 +98,12 @@ setTimeout(function() {
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Thống kê</h5>
+                                    <h5>Thống kê -- <?php echo sw_get_current_weekday() ?></h5>
                                     <span>Lưu lượng xe theo các ngày trong tuần</span>
+                                    <input id="today" type="date">
                                 </div>
                                 <div class="card-block">
-                                    <div id="chart-all-vnd"></div>
+                                    <div id="chart-all-car"></div>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +130,10 @@ setTimeout(function() {
         </div>
     </div>
 </div>
-
+<script>
+let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#today").value = today;
+</script>
 
 
 <?php get_footer(); ?>

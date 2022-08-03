@@ -30,10 +30,69 @@ function stop() {
 }
 </script>
 <style>
-#videoElement {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
+.row #videoElement {
+    width: 100%;
+    height: 28rem;
+    background-color: #f3f3f3;
+    background-image: url(./assets/images/Cong_Do_Xe.png);
+    background-size: cover;
+}
+
+.row .btn-video {
+    margin: auto;
+    padding: 0.5rem;
+
+}
+
+.row .btn-video .button-3 {
+    appearance: none;
+    background-color: #2ea44f;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+.button-3:hover {
+    background-color: #2c974b;
+}
+
+.button-3:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+}
+
+.button-3:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+.button-3:active {
+    background-color: #298e46;
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 </style>
 <div class="pcoded-content">
@@ -67,9 +126,10 @@ function stop() {
                     <div class="row">
                         <video autoplay="true" id="videoElement">
                         </video>
-                        <div>
-                            <button onclick="start();">Start</button>
-                            <button onclick="stop();">Stop</button>
+                        <div class="btn-video">
+                            <button class="button-3" role="button" onclick="start();">Start</button>
+                            <button class="button-3" style="background-color: red" role="button"
+                                onclick="stop();">Stop</button>
                         </div>
                     </div>
                 </div>
@@ -79,61 +139,4 @@ function stop() {
         </div>
     </div>
 </div>
-<script>
-// var video = document.querySelector("#videoElement");
-
-// if (navigator.mediaDevices.getUserMedia) {
-//     navigator.mediaDevices.getUserMedia({
-//             video: true
-//         })
-//         .then(function(stream) {
-//             video.srcObject = stream;
-//         })
-//         .catch(function(err0r) {
-//             console.log("Something went wrong!");
-//         });
-// } else {
-//     console.log("getUserMedia not supported!");
-// }
-
-
-// cameraService(cameraStop) {
-//     var front = false;
-//     var constraints = {
-//         video: {
-//             facingMode: (front ? "user" : "environment")
-//         }
-//     };
-
-//     function handleSuccess(stream) {
-//         const video = document.querySelector('#video');
-//         video.srcObject = stream;
-//         if (cameraStop == true) {
-//             video.play();
-//             console.log("On Stream");
-//         } else {
-//             stopStream(stream);
-//             console.log("Off Stream");
-//         }
-//     }
-
-//     function showVideo() {
-//         this.video.classList.add("visible");
-//     }
-
-//     function handleError(error) {
-//         console.log('getUserMedia error: ', error);
-//     }
-
-//     navigator.mediaDevices.getUserMedia(constraints).
-//     then(handleSuccess).catch(handleError);
-
-//     function stopStream(stream) {
-
-//         for (let track of stream.getTracks()) {
-//             track.stop()
-//         }
-//     }
-// }
-</script>
 <?php get_footer(); ?>
