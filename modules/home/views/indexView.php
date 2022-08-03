@@ -6,43 +6,43 @@ setTimeout(function() {
     Morris.Bar({
         element: 'chart-all-car',
         data: [{
-            y: 'Mon',
+            y: 'Thứ 2',
             a: <?php if (isset($data_carIn[1]['XeVao'])) echo $data_carIn[1]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[1]['XeRa'])) echo $data_carOut[1]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Tue',
+            y: 'Thứ 3',
             a: <?php if (isset($data_carIn[2]['XeVao'])) echo $data_carIn[2]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[2]['XeRa'])) echo $data_carOut[2]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Wed',
+            y: 'Thứ 4',
             a: <?php if (isset($data_carIn[3]['XeVao'])) echo $data_carIn[3]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[3]['XeRa'])) echo $data_carOut[3]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Thu',
+            y: 'Thứ 5',
             a: <?php if (isset($data_carIn[4]['XeVao'])) echo $data_carIn[4]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[4]['XeRa'])) echo $data_carOut[4]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Fri',
+            y: 'Thứ 6',
             a: <?php if (isset($data_carIn[5]['XeVao'])) echo $data_carIn[5]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[5]['XeRa'])) echo $data_carOut[5]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Sat',
+            y: 'Thứ 7',
             a: <?php if (isset($data_carIn[6]['XeVao'])) echo $data_carIn[6]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[6]['XeRa'])) echo $data_carOut[6]['XeRa'];
                     else  echo ("0") ?>,
         }, {
-            y: 'Sun',
+            y: 'Chủ nhật',
             a: <?php if (isset($data_carIn[0]['XeVao'])) echo $data_carIn[0]['XeVao'];
                     else  echo ("0") ?>,
             b: <?php if (isset($data_carOut[0]['XeRa'])) echo $data_carOut[0]['XeRa'];
@@ -97,10 +97,12 @@ setTimeout(function() {
                         <!-- Bar Chart start -->
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h5>Thống kê -- <?php echo sw_get_current_weekday() ?></h5>
-                                    <span>Lưu lượng xe theo các ngày trong tuần</span>
-                                    <input id="today" type="date">
+                                <div class="card-header" style="display: flex;">
+                                    <div style="flex-grow: 9">
+                                        <h5>Thống kê -- <?php echo sw_get_current_weekday() ?> </h5>
+                                        <span>Lưu lượng xe theo các ngày trong tuần</span>
+                                    </div>
+                                    <input id="today" type="date" style="flex-grow: 1">
                                 </div>
                                 <div class="card-block">
                                     <div id="chart-all-car"></div>
