@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.3.0-dev+20220807.d85cb55ddf
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 15, 2022 lúc 03:20 AM
+-- Thời gian đã tạo: Th8 08, 2022 lúc 09:22 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Phiên bản PHP: 8.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,17 @@ CREATE TABLE `accesscontrol` (
 --
 
 INSERT INTO `accesscontrol` (`ID`, `ClientID`, `TimeIn`, `TimeOut`, `Description`) VALUES
-(1, 1, '2022-07-15 03:02:38', '2022-07-15 03:02:38', '');
+(1, 1, '2022-05-31 05:17:19', '2022-05-31 06:17:19', ''),
+(2, 2, '2022-04-01 17:00:00', '2022-04-01 08:00:00', ''),
+(3, 3, '2022-05-30 05:22:09', '2022-05-30 07:22:09', ''),
+(4, 2, '2022-08-01 08:54:37', '2022-08-01 09:54:37', ''),
+(5, 2, '2022-08-01 10:54:37', '2022-08-01 08:54:37', ''),
+(6, 3, '2022-08-02 08:55:36', '2022-08-02 08:55:36', ''),
+(7, 1, '2022-08-02 11:55:36', '2022-08-02 14:55:36', ''),
+(8, 5, '2022-08-02 18:56:11', '2022-08-02 19:56:11', ''),
+(9, 6, '2022-08-02 18:56:11', '2022-08-02 20:56:11', ''),
+(10, 7, '2022-08-03 03:16:28', '2022-08-03 03:16:28', ''),
+(11, 8, '2022-08-03 03:16:28', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -124,9 +134,9 @@ CREATE TABLE `card` (
 --
 
 INSERT INTO `card` (`ID`, `CardNumber`, `LicensePlates`, `Color`, `Brand`, `DateSignCard`, `DateSignCar`, `CarModel`, `Description`) VALUES
-(1, 378432456, 'HD-999966', 'Red', 'Mercedes Benz', '2020-10-26', '2016-07-21', '', ''),
-(2, 456577574, '34A-868686', 'Black', 'McLaren', '2020-10-26', '2016-07-21', '', ''),
-(4, 567892345, '29B-282828', 'Gray', 'Huyndai', '2020-10-26', '2016-02-04', '', '');
+(1, 378432456, 'HD-999996', 'Red', 'Mercedes Benz', '2020-10-26', '2016-07-21', '', ''),
+(2, 657564588, '34A-868686', 'Black', 'McLaren', '2020-10-26', '2016-07-21', '', ''),
+(3, 658971235, '29B-282828', 'Gray', 'Huyndai', '2019-12-12', '2015-03-24', '', '');
 
 -- --------------------------------------------------------
 
@@ -182,7 +192,7 @@ CREATE TABLE `client` (
   `CardID` int(11) NOT NULL,
   `FaceID` int(11) NOT NULL,
   `IsActive` int(11) NOT NULL,
-  `Description` text NOT NULL
+  `Description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -191,7 +201,13 @@ CREATE TABLE `client` (
 
 INSERT INTO `client` (`ID`, `Name`, `Age`, `Sex`, `CitizenID`, `CardID`, `FaceID`, `IsActive`, `Description`) VALUES
 (1, 'Nguyễn Đình Việt', 23, 'Nam', 123456, 1, 1, 1, ''),
-(2, 'Nguyễn Thế Nhật', 20, 'Nam', 234789, 1, 2, 1, '');
+(2, 'Nguyễn Thế Nhật', 23, 'Nam', 345567, 1, 2, 1, ''),
+(3, 'Nguyễn Thị Ế', 20, 'Nữ', 234789, 1, 3, 1, ''),
+(4, 'Phạm Ngọc Biên', 26, 'Nam', 235678, 2, 4, 1, ''),
+(5, 'Trần Thị Hậu', 23, 'Nữ', 567890, 2, 5, 1, ''),
+(6, 'Nguyễn Văn Tiến', 23, 'Nam', 126787, 3, 6, 1, ''),
+(7, 'Nguyễn Trâm Anh', 23, 'Nữ', 489034, 3, 7, 1, ''),
+(9, 'Ô là lá', 45, 'Nữ', 67676767, 1, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -391,7 +407,7 @@ INSERT INTO `users` (`id`, `user_fname`, `user_mname`, `user_lname`, `user_conta
 (7, 'Mạnh', 'Văn', 'Đỗ', '0987981440', 'manh1968@gmail.com', '1e790c25969bdc07489e1ab082357cf5', 2, 1, 'Nam', '2838213213', '0'),
 (8, 'Huê', 'Thị ', 'Nguyễn', '0988231234', 'hue1970@gmail.com', 'bef388fa5120be1bc8daa6003fd54c71', 2, 1, 'Nữ', '0982321313', 'Bình Minh Khoái Châu'),
 (9, 'Đạt', 'Tiến', 'Nguyễn', '0982123131', 'dat1999@gmail.com', 'd80bbf96957676303bb3e67988d9a813', 2, 1, 'Nam', '0908223332', '920 Tô Thành'),
-(10, 'viet', 'dinh', 'nguyen', '070707070707', 'dinhviet99hdhd@gmail.com', 'b48ef5a0134fc1852cc8c9256f2dead6', 1, 1, 'Nam', '123456', 'Hoàng QUốc Việt');
+(10, 'viet', 'dinh', 'nguyen', '0123456789', 'dinhviet99hdhd@gmail.com', 'b48ef5a0134fc1852cc8c9256f2dead6', 1, 1, 'Nam', '34343434', 'Cộng Hòa - Kim Thành - Hải Dương');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -472,7 +488,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `accesscontrol`
 --
 ALTER TABLE `accesscontrol`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `account`
@@ -490,7 +506,7 @@ ALTER TABLE `banks`
 -- AUTO_INCREMENT cho bảng `card`
 --
 ALTER TABLE `card`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -502,7 +518,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `client`
 --
 ALTER TABLE `client`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `currency`
@@ -532,7 +548,7 @@ ALTER TABLE `transport`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
