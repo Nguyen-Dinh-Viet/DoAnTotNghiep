@@ -102,7 +102,9 @@ setTimeout(function() {
                                         <h5>Thống kê -- <?php echo sw_get_current_weekday() ?> </h5>
                                         <span>Lưu lượng xe theo các ngày trong tuần</span>
                                     </div>
-                                    <input id="today" type="date" style="flex-grow: 1">
+                                    <input class="" type="date" name="to_date" id="to_date" value="<?php echo set_value('to') ?>">
+                                    <?php #echo form_error('date') ?>
+                                    <!-- <input id="today" type="date" style="flex-grow: 1"> -->
                                 </div>
                                 <div class="card-block">
                                     <div id="chart-all-car"></div>
