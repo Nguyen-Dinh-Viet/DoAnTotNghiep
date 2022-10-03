@@ -19,11 +19,9 @@ $db = array(
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'database' => 'account',
+    'database' => 'scpcdatabase',
     // 'hostname' => 'blackholemta.space',
     // 'username' => 'blackhol_accounting',
     // 'password' => 'g435R_dWr4j4V_D',
     // 'database' => 'blackhol_account',
 );
-
-

@@ -7,8 +7,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Danh sách khách hàng</h5>
-                        <p class="m-b-0">Danh sách Khách hàng trong hệ thống</p>
+                        <h5 class="m-b-10">Danh sách thẻ đăng kí</h5>
+                        <p class="m-b-0">Danh sách thẻ ra-vào trong hệ thống</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -16,10 +16,10 @@
                         <li class="breadcrumb-item">
                             <a href="?mod=home"> <i class="fa fa-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="?mod=client&action=listClient">Khách hàng</a>
+                        <li class="breadcrumb-item"><a href="#">Thẻ đăng kí</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="?mod=client&action=listClient">Danh sách Khách hàng</a>
+                            <a href="?mod=cardrfid&action=listCardRFID">Danh sách thẻ ra-vào</a>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +39,7 @@
                             <!-- Hover table card start -->
                             <div class="card">
                                 <div class="card-header">
-                                    <a class="btn btn-info" href="?mod=client&action=addClient">Đăng kí khách hàng
+                                    <a class="btn btn-info" href="?mod=cardrfid&action=addCardRFID">Đăng kí thẻ ra-vào
                                         mới</a>
                                     <!-- <span>use class <code>table-hover</code> inside table element</span> -->
                                     <div class="card-header-right">
@@ -58,38 +58,25 @@
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Họ - Tên</th>
-                                                    <th>Tuổi</th>
-                                                    <th>Giới tính</th>
-                                                    <th>Thẻ căn cước</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Trạng thái</th>
+                                                    <th>Số thẻ</th>
+                                                    <th>Ngày đăng kí thẻ</th>
                                                     <th>Thao tác</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 $i = 1;
-                                                foreach ($clients as $item) {
+                                                foreach ($cards as $item) {
                                                 ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $i ?></th>
-                                                    <td><?php echo $item['Name'] ?></td>
-                                                    <td><?php echo $item['Age'] ?></td>
-                                                    <td><?php echo $item['Sex'] ?></td>
-                                                    <td><?php echo $item['CitizenID'] ?></td>
-                                                    <td><?php echo $item['FaceID'] ?></td>
-                                                    <td><?php if ($item['IsActive'] == 1) {
-                                                                echo "Đã kích hoạt";
-                                                            } else {
-                                                                echo "Chưa kích hoạt";
-                                                            }
-                                                            ?></td>
+                                                    <td><?php echo $item['CardNumber'] ?></td>
+                                                    <td><?php echo $item['DateSignCard'] ?></td>
                                                     <td class="">
                                                         <a class="mr-2" title="Sửa"
-                                                            href="<?php echo $item['changeClient'] ?>"><i
+                                                            href="<?php echo $item['changeCardRFID'] ?>"><i
                                                                 class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                        <a title="Xóa" href="<?php echo $item['deleteClient'] ?>"
+                                                        <a title="Xóa" href="<?php echo $item['deleteCardRFID'] ?>"
                                                             onclick="return confirm('Bạn có chắc chắn muốn xóa!')"><i
                                                                 class="fa fa-trash" aria-hidden="true"></i></a>
                                                     </td>

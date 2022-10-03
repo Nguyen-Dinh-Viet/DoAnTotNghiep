@@ -220,8 +220,8 @@ code {
 
 .card .card-header span {
 	display: block;
-	font-size: 13px;
-	margin-top: 5px;
+	font-size: 16px;
+	/* margin-top: 5px; */
 }
 
 .card .card-header h5 {

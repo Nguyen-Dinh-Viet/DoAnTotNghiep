@@ -65,8 +65,8 @@ $info = get_info_accesscontrol_by_id($id);
                                                     <th>Thời gian vào</th>
                                                     <th>Thời gian ra</th>
                                                     <th>Biển số xe</th>
-                                                    <th>Họ Tên</th>
                                                     <th>Số thẻ</th>
+                                                    <th>Họ Tên(Nếu có)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -74,8 +74,8 @@ $info = get_info_accesscontrol_by_id($id);
                                                     <td><?php echo $info['TimeIn'] ?></td>
                                                     <td><?php echo $info['TimeOut'] ?></td>
                                                     <td><?php echo $info['LicensePlates'] ?></td>
-                                                    <td><?php echo $info['Name'] ?></td>
                                                     <td><?php echo $info['CardNumber'] ?></td>
+                                                    <td><?php echo $info['Name'] ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>

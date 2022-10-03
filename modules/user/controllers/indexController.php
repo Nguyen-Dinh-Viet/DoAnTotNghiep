@@ -112,7 +112,7 @@ function addUserAction()
                     'taxcode' => $tax_code,
                     'addr' => $address
                 );
-                db_insert('users', $data);
+                db_insert('user', $data);
                 echo "<script type='text/javascript' >alert('Thêm tài khoản thành công!')</script>";
             }
         }
@@ -202,7 +202,7 @@ function changeUserAction()
             );
             // show_array($data);
             $where = "`id`={$id}";
-            db_update('users', $data1, $where);
+            db_update('user', $data1, $where);
             $info_user = get_info_user_by_id($id);
             $data['user'] = $info_user;
             echo "<script type='text/javascript' >alert('Cập nhật tài khoản thành công!')</script>";
@@ -284,7 +284,7 @@ function changePasswordAction()
                 'user_password' => $new_password,
             );
             $where = "`user_email`='{$email}'";
-            db_update('users', $data1, $where);
+            db_update('user', $data1, $where);
             echo "<script type='text/javascript' >alert('Cập nhật mật khẩu thành công!')</script>";
         }
     }
@@ -532,7 +532,7 @@ function infoUserAction()
             );
             // show_array($data);
             $where = "`user_email`='{$email}'";
-            db_update('users', $data1, $where);
+            db_update('user', $data1, $where);
             $info_user = get_info_user_by_email($email);
             $data['user'] = $info_user;
             echo "<script type='text/javascript' >alert('Cập nhật tài khoản thành công!')</script>";

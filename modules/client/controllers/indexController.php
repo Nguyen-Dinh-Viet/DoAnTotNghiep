@@ -17,7 +17,7 @@ function listClientAction()
 function addClientAction()
 {
     $info['cards'] = get_list_card();
-    global $Name, $Age, $Sex, $CitizenID, $cards;
+    global $Name, $Age, $Sex, $CitizenID;
     if (isset($_POST['btn-submit'])) {
         $error = array();
         if (empty($_POST['Name'])) {
@@ -41,7 +41,7 @@ function addClientAction()
 
             $CitizenID = $_POST['CitizenID'];
         }
-        $cards = $_POST['CardID'];
+        // $cards = $_POST['CardID'];
         //Bắt đầu thêm
         if (empty($error)) {
             $data = array(
@@ -49,7 +49,7 @@ function addClientAction()
                 'Age' => $Age,
                 'Sex' => $Sex,
                 'CitizenID' => $CitizenID,
-                'CardID' => $cards,
+
             );
             db_insert('client', $data);
             echo "<script type='text/javascript' >alert('Thêm khách hàng thành công!')</script>";
@@ -66,8 +66,7 @@ function changeClientAction()
     $info_client = get_info_client_by_id($id);
     $data = array();
     $data['client'] = $info_client;
-    $data['cards'] = get_list_card();
-    global $Name, $Age, $Sex, $CitizenID, $cards;
+    global $Name, $Age, $Sex, $CitizenID;
     if (isset($_POST['btn-update'])) {
         $error = array();
         if (empty($_POST['Name'])) {
@@ -91,7 +90,6 @@ function changeClientAction()
 
             $CitizenID = $_POST['CitizenID'];
         }
-        $cards = $_POST['CardID'];
 
         //Bắt đầu thêm
         if (empty($error)) {
@@ -100,13 +98,11 @@ function changeClientAction()
                 'Age' => $Age,
                 'Sex' => $Sex,
                 'CitizenID' => $CitizenID,
-                'CardID' => $cards,
             );
             $where = "`id`={$id}";
             db_update('client', $data1, $where);
             $info_client = get_info_client_by_id($id);
             $data['client'] = $info_client;
-            $data['cards'] = get_list_card();
             echo "<script type='text/javascript' >alert('Cập nhật thông tin khách hàng thành công!')</script>";
         }
     }

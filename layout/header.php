@@ -12,9 +12,10 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv=”Content-Type” content=”text/html;  />
+    <meta http-equiv=”Content-Type” content=”text/html; />
 
-    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="keywords"
+        content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Codedthemes" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -38,7 +39,7 @@
     <!-- StyleOfMe.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/styleOfMe.css">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datepicker.css">
-    
+
 </head>
 
 <body>
@@ -109,9 +110,11 @@
                             <div class="header-search">
                                 <div class="main-search morphsearch-search">
                                     <div class="input-group">
-                                        <span class="input-group-prepend search-close"><i class="ti-close input-group-text"></i></span>
+                                        <span class="input-group-prepend search-close"><i
+                                                class="ti-close input-group-text"></i></span>
                                         <input type="text" class="form-control" placeholder="Enter Keyword">
-                                        <span class="input-group-append search-btn"><i class="ti-search input-group-text"></i></span>
+                                        <span class="input-group-append search-btn"><i
+                                                class="ti-search input-group-text"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +130,8 @@
                     <div class="navbar-container container-fluid">
                         <ul class="nav-left">
                             <li>
-                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a>
+                                </div>
                             </li>
                             <li>
                                 <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
@@ -135,9 +139,9 @@
                                 </a>
                             </li>
                         </ul>
-                        
+
                         <ul class="nav-right">
-                            <li style ="font-size:18px; color:#fff"><?php echo sw_get_current_weekday() ?></li>
+                            <li style="font-size:18px; color:#fff"><?php echo sw_get_current_weekday() ?></li>
                             <li class="header-notification">
                                 <a href="#!" class="waves-effect waves-light">
                                     <i class="ti-bell"></i>
@@ -150,30 +154,36 @@
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="assets/images/KimDami.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius"
+                                                src="assets/images/KimDami.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">John Doe</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                    elit.</p>
                                                 <span class="notification-time">30 minutes ago</span>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="assets/images/like.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius"
+                                                src="assets/images/like.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">Joseph William</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                    elit.</p>
                                                 <span class="notification-time">30 minutes ago</span>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="waves-effect waves-light">
                                         <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                            <img class="d-flex align-self-center img-radius"
+                                                src="assets/images/avatar-3.jpg" alt="Generic placeholder image">
                                             <div class="media-body">
                                                 <h5 class="notification-user">Sara Soudein</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer
+                                                    elit.</p>
                                                 <span class="notification-time">30 minutes ago</span>
                                             </div>
                                         </div>
@@ -183,7 +193,8 @@
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
                                     <img src="assets/images/KimDami.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span><?php $info = get_info_user(); echo($info["user_email"] ); ?></span>
+                                    <span><?php $info = get_info_user();
+                                            echo ($info["user_email"]); ?></span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -197,9 +208,9 @@
                                             <i class="ti-user"></i> Hồ sơ cá nhân
                                         </a>
                                     </li>
-                                     <li class="waves-effect waves-light">
+                                    <li class="waves-effect waves-light">
                                         <a href="?mod=user&action=changePassword">
-                                        <i class="fa fa-unlock-alt" aria-hidden="true"></i> Đổi mật khẩu
+                                            <i class="fa fa-unlock-alt" aria-hidden="true"></i> Đổi mật khẩu
                                         </a>
                                     </li>
                                     <!--
@@ -219,5 +230,3 @@
                     </div>
                 </div>
             </nav>
-
-            

@@ -80,20 +80,24 @@
                                             <?php echo form_error('CitizenID') ?>
                                         </div>
                                         <!-- Thẻ ra-vào -->
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="CardID">Chọn thẻ ra-vào (nếu có)</label>
                                             <select name="CardID" id="CardID" class="form-control"
-                                                value="<?php echo set_value('CardID') ?>">
+                                                value="<?php #echo set_value('CardID') 
+                                                        ?>">
                                                 <option value="0">Chọn thẻ ra-vào</option>
-                                                <?php foreach ($cards as $item) { ?>
-                                                <option value="<?php echo $item['ID'] ?>">
-                                                    <?php echo $item['CardNumber'] ?>
+                                                <?php #foreach ($cards as $item) { 
+                                                ?>
+                                                <option value="<?php #echo $item['ID'] 
+                                                                ?>">
+                                                    <?php #echo $item['CardNumber'] 
+                                                    ?>
                                                 </option>
                                                 <?php
-                                                }
+                                                #}
                                                 ?>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <!-- Hình ảnh -->
 
                                         <!-- Button thêm mới -->

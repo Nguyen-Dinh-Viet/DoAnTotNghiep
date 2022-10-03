@@ -102,10 +102,30 @@ setTimeout(function() {
                                         <h5>Thống kê -- <?php echo sw_get_current_weekday() ?> </h5>
                                         <span>Lưu lượng xe theo các ngày trong tuần</span>
                                     </div>
-                                    <input class="" type="date" name="to_date" id="to_date" value="<?php echo set_value('to') ?>">
-                                    <?php #echo form_error('date') ?>
+                                    <div class="form-group style-datepicker">
+                                        <div class="datepicker date input-group p-0 shadow-sm mr-3">
+                                            <input type="text" name="dateSearch" value="<?php echo $dateSearch
+                                                                                        ?>"
+                                                placeholder="Choose a reservation date" class="form-control py-4 px-4"
+                                                id="reservationDate">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <input class="" type="date" name="to_date" id="to_date" value="<?php #echo set_value('to') 
+                                                                                                        ?>"> -->
+                                    <?php #echo form_error('date') 
+                                    ?>
                                     <!-- <input id="today" type="date" style="flex-grow: 1"> -->
                                 </div>
+                                <!-- <div class="card-block" style="display: flex">
+                                    <div id="chart-all-car"></div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
                                 <div class="card-block">
                                     <div id="chart-all-car"></div>
                                 </div>
@@ -134,10 +154,10 @@ setTimeout(function() {
         </div>
     </div>
 </div>
-<script>
+<!-- <script>
 let today = new Date().toISOString().substr(0, 10);
 document.querySelector("#today").value = today;
-</script>
-
+</script> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script> -->
 
 <?php get_footer(); ?>

@@ -59,12 +59,14 @@
                                         <div class="d-flex mb-3" style="justify-content: space-between;">
                                             <div class="form-inline mr-2">
                                                 <label for="cat_id" style="font-weight:600;">Thu/Chi</label>
-                                                <select value="<?php echo set_value('cat_id') ?>" id="cat_id" name="cat_id" class="form-control">
+                                                <select value="<?php echo set_value('cat_id') ?>" id="cat_id"
+                                                    name="cat_id" class="form-control">
                                                     <?php
-                                                        foreach ($category as $item) {
+                                                    foreach ($category as $item) {
                                                         # code...?
                                                     ?>
-                                                    <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?></option>
+                                                    <option value="<?php echo $item['id'] ?>">
+                                                        <?php echo $item['name'] ?></option>
                                                     <?php
                                                     }
                                                     ?>
@@ -78,23 +80,27 @@
                                                     foreach ($list_ship as $item) {
                                                         # code...?
                                                     ?>
-                                                        <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?></option>
+                                                    <option value="<?php echo $item['id'] ?>">
+                                                        <?php echo $item['name'] ?></option>
                                                     <?php
                                                     }
                                                     ?>
 
                                                 </select>
-                                            </div>                                            
-                                            <div class="form-inline mr-2" >
+                                            </div>
+                                            <div class="form-inline mr-2">
                                                 <label for="from_date" class="mr-2" style="font-weight:600;">Từ</label>
-                                                <input class="form-control" type="date" name="from_date" id="from_date" value="<?php echo set_value('from') ?>">
+                                                <input class="form-control" type="date" name="from_date" id="from_date"
+                                                    value="<?php echo set_value('from') ?>">
                                             </div>
                                             <div class="form-inline mr-2">
                                                 <label for="to_date" class="mr-2" style="font-weight:600;">Đến</label>
-                                                <input class="form-control" type="date" name="to_date" id="to_date" value="<?php echo set_value('to') ?>">
+                                                <input class="form-control" type="date" name="to_date" id="to_date"
+                                                    value="<?php echo set_value('to') ?>">
                                             </div>
                                             <?php echo form_error('date') ?>
-                                            <button type="submit" name="btn-search-report" id="btn-search-report" class="btn btn-success">Tìm kiếm</button>
+                                            <button type="submit" name="btn-search-report" id="btn-search-report"
+                                                class="btn btn-success">Tìm kiếm</button>
                                         </div>
                                     </form>
                                     <div class="table-responsive">
@@ -105,8 +111,8 @@
                                                     <th>Thời gian vào</th>
                                                     <th>Thời gian ra</th>
                                                     <th>Biển số xe</th>
-                                                    <th>Họ Tên</th>
                                                     <th>Số thẻ</th>
+                                                    <th>Họ Tên(nếu có)</th>
                                                     <th>Thao tác</th>
                                                 </tr>
                                             </thead>
@@ -120,8 +126,8 @@
                                                     <td><?php echo $item['TimeIn'] ?></td>
                                                     <td><?php echo $item['TimeOut'] ?></td>
                                                     <td><?php echo $item['LicensePlates'] ?></td>
-                                                    <td><?php echo $item['Name'] ?></td>
                                                     <td><?php echo $item['CardNumber'] ?></td>
+                                                    <td><?php echo $item['Name'] ?></td>
                                                     <td class="">
                                                         <a class="mr-2" title="Xem chi tiết"
                                                             href="<?php echo $item['detailAccesscontrol'] ?>"><i

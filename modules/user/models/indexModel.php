@@ -2,7 +2,7 @@
 function get_info_users()
 {
 
-    $users = db_fetch_array("SELECT * FROM `users`");
+    $users = db_fetch_array("SELECT * FROM `user`");
     foreach ($users as &$item) {
         $item['changeUser'] = "?mod=user&action=changeUser&id={$item['id']}";
         $item['deleteUser'] = "?mod=user&action=deleteUser&id={$item['id']}";
@@ -13,7 +13,7 @@ function get_info_users()
 // check mail
 function check_mail($email)
 {
-    $check_email = db_num_rows("SELECT *FROM `users` WHERE  `user_email` = '{$email}'");
+    $check_email = db_num_rows("SELECT *FROM `user` WHERE  `user_email` = '{$email}'");
     if ($check_email > 0)
         return true;
     return false;
@@ -22,7 +22,7 @@ function check_mail($email)
 // check phone
 function check_phone($phone)
 {
-    $check_phone = db_num_rows("SELECT *FROM `users` WHERE  `user_contact` = '{$phone}'");
+    $check_phone = db_num_rows("SELECT *FROM `user` WHERE  `user_contact` = '{$phone}'");
     if ($check_phone > 0)
         return true;
     return false;
@@ -30,27 +30,27 @@ function check_phone($phone)
 // xoa tai khoan
 function delete_user($id)
 {
-    $query = "DELETE from `users` where `id`={$id}";
+    $query = "DELETE from `user` where `id`={$id}";
     db_query($query);
     echo "<script type='text/javascript' >alert('Xoá tài khoản thành công!')</script>";
 }
 // lay thông tin user
 function get_info_user_by_id($id)
 {
-    $info = db_fetch_row("SELECT * FROM `users` WHERE `id` = '{$id}' ");
+    $info = db_fetch_row("SELECT * FROM `user` WHERE `id` = '{$id}' ");
     return $info;
 }
 // lay thông tin user
 function get_info_user_by_email($email)
 {
-    $info = db_fetch_row("SELECT * FROM `users` WHERE `user_email` = '{$email}' ");
+    $info = db_fetch_row("SELECT * FROM `user` WHERE `user_email` = '{$email}' ");
     return $info;
 }
 
 // Kiểm tra mật khẩu
 function check_password($password, $email)
 {
-    $check_user = db_num_rows("SELECT * FROM `users` WHERE `user_email`='{$email}' AND `user_password`='{$password}' AND `activate` =  '1'");
+    $check_user = db_num_rows("SELECT * FROM `user` WHERE `user_email`='{$email}' AND `user_password`='{$password}' AND `activate` =  '1'");
     if ($check_user)
         return true;
     return false;

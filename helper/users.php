@@ -1,6 +1,6 @@
 <?php
 	function check_login($email,$password){
-		$check_user=db_num_rows("SELECT * FROM `users` WHERE `user_email`='{$email}' AND `user_password`='{$password}' AND `activate` =  '1'" );
+		$check_user=db_num_rows("SELECT * FROM `user` WHERE `user_email`='{$email}' AND `user_password`='{$password}' AND `activate` =  '1'" );
 	   if($check_user)
 	   return true;
 	   return false;
@@ -13,10 +13,10 @@
 		{
 			if(!empty($_COOKIE['is_login']))
 			{
-				$info = db_fetch_row("SELECT * FROM `users` where `user_email` = '{$_COOKIE['user_name']}'");
+				$info = db_fetch_row("SELECT * FROM `user` where `user_email` = '{$_COOKIE['user_name']}'");
 			}
 			else {
-				$info = db_fetch_row("SELECT * FROM `users` where `user_email` = '{$_SESSION['user_login']}'");
+				$info = db_fetch_row("SELECT * FROM `user` where `user_email` = '{$_SESSION['user_login']}'");
 			}
 			return $info;
 		}
@@ -99,5 +99,3 @@
 		return $weekday.', '.date('d/m/Y');
 	}
 	// 
-	
-?>

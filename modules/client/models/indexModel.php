@@ -3,7 +3,7 @@
 //Lấy danh sách thông tin các khách hàng
 function get_info_clients()
 {
-    $clients = db_fetch_array("SELECT cli.ID as ID, cli.Name as Name, cli.Age as Age, cli.Sex as Sex, cli.CitizenID as CitizenID, ca.CardNumber as CardID, cli.FaceID as FaceID FROM `client` as cli LEFT JOIN `card` as ca on ca.`ID` = cli.`CardID`;");
+    $clients = db_fetch_array("SELECT * FROM `client`");
     foreach ($clients as &$item) {
         $item['changeClient'] = "?mod=client&action=changeClient&id={$item['ID']}";
         $item['deleteClient'] = "?mod=client&action=deleteClient&id={$item['ID']}";
@@ -23,7 +23,7 @@ function get_info_client_by_id($id)
 // Lấy danh sách thẻ ra-vào
 function get_list_card()
 {
-    $info = db_fetch_array("SELECT * FROM `card`");
+    $info = db_fetch_array("SELECT * FROM `cardrfid`");
     return $info;
 }
 

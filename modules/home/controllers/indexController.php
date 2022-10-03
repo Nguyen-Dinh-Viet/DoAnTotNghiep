@@ -39,6 +39,9 @@ function construct()
 
 function indexAction()
 {
+    $date = getdate();
+    $date = date('d/m/Y');
+    $data['dateSearch'] = $date;
     $data['data_carIn'] = get_all_data_carIn_count_on_days_in_week();
     $data['data_carOut'] = get_all_data_carOut_count_on_days_in_week();
     load_view('index', $data);
