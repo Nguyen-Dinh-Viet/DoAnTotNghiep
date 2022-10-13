@@ -1,6 +1,13 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
+
 <style>
+.pcoded-inner-content {
+    border: 2px solid #94d3a2;
+    border-radius: 6px;
+    margin: 0.5em;
+}
+
 .video video {
     width: 15rem;
     height: 10.5rem;
@@ -13,6 +20,16 @@
 }
 
 #videoElement2 {
+    background-image: url(./assets/images/KimDami.jpg);
+    background-size: cover;
+}
+
+#videoElement1_out {
+    background-image: url(./assets/images/Cong_Do_Xe.png);
+    background-size: cover;
+}
+
+#videoElement2_out {
     background-image: url(./assets/images/KimDami.jpg);
     background-size: cover;
 }
@@ -88,7 +105,7 @@
 </style>
 <div class="pcoded-content">
     <!-- Page-header start -->
-    <div class="page-header">
+    <!-- <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -106,8 +123,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Page-header end -->
+
+    <!-- =============== CỔNG VÀO =============== -->
     <div class="pcoded-inner-content">
         <!-- Main-body start -->
         <div class="main-body">
@@ -232,9 +251,135 @@
             </div>
         </div>
     </div>
+
+    <!-- =============== CỔNG RA =============== -->
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper" style="padding-top:0rem;">
+                <!-- Page-body start -->
+                <div class="page-body" style="width:100%">
+                    <div class="row">
+                        <div class="col-md-1" style="padding:0em;">
+                            <label class="control-label" style="background-color: red">Cổng ra</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!-- video 1 -->
+                            <div class="row" style="margin-bottom:1rem; ">
+                                <div class="col-md-4 video" style="text-align: center;">
+                                    <label class="">Camera biển số xe</label>
+                                    <video autoplay="true" id="videoElement1_out" class="">
+                                    </video>
+                                </div>
+                                <div class="btn-video col-md-4" style="margin-top: 2em;text-align: center;">
+                                    <select name="VideoDeviceID_out" id="VideoDeviceID1_out" class="form-control">
+                                        <option value="0">Chọn thiết bị</option>
+                                    </select>
+                                    <!-- <button class="btn btn-default" id="" onclick="getDevicesInfo()">Devices</button> -->
+                                    <button class="button-3" id="startCamera1_out"
+                                        style="margin-bottom:1rem;margin-top:1rem;" role="button"
+                                        onclick="doStartCamera_out(this)">Bật Camera</button>
+                                    <button class="button-3" id="stopCamera1_out" style="background-color: red"
+                                        role="button" onclick="doStopCamera_out(this);">Tắt Camera</button>
+                                </div>
+                                <div class="col-md-4 image" style="text-align: center;padding-left:0em">
+                                    <label class="">Ảnh biển số xe</label>
+                                    <div class="" style="background-color:antiquewhite; height:12em">
+                                        <canvas id="canvas_video1_out"
+                                            value="<?php echo set_value('ImageLicensePlates') ?>"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Video 2 -->
+                            <div class="row" style="margin-bottom:1rem; ">
+                                <div class="col-md-4 video" style="text-align: center;">
+                                    <label class="">Camera khuôn mặt</label>
+                                    <video autoplay="true" id="videoElement2_out" class="">
+                                    </video>
+                                </div>
+                                <div class="btn-video col-md-4" style="margin-top: 2em;text-align: center;">
+                                    <select name="VideoDeviceID_out" id="VideoDeviceID2_out" class="form-control">
+                                        <option value="0">Chọn thiết bị</option>
+                                    </select>
+                                    <button class="button-3" id="startCamera2_out"
+                                        style="margin-bottom:1rem;margin-top:1rem;" role="button"
+                                        onclick="doStartCamera_out(this)">Bật Camera</button>
+                                    <button class="button-3" id="stopCamera2_out" style="background-color: red"
+                                        role="button" onclick="doStopCamera_out(this);">Tắt Camera</button>
+                                </div>
+                                <div class="col-md-4 image" style="text-align: center;padding-left:0em">
+                                    <label class="">Ảnh khuôn mặt</label>
+                                    <div class="" style="background-color:antiquewhite; height:12em">
+                                        <canvas id="canvas_video2_out"
+                                            value="<?php echo set_value('ImageFace') ?>"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-block" id="CarCheckIn">
+                                <!-- Mã thẻ RFID -->
+                                <div class="form-group">
+                                    <label for="RFIDcode_out">Mã thẻ RFID</label>
+                                    <input id="RFIDcode_out" type="text" name="RFIDcode"
+                                        value="<?php echo set_value('RFIDcode') ?>" class="form-control"
+                                        placeholder="Mã thẻ RFID" autofocus autocomplete="off">
+                                    <?php echo form_error('Name') ?>
+                                </div>
+                                <!-- Biển số xe -->
+                                <div class="form-group">
+                                    <label for="license_plates_out">Biển số xe</label>
+                                    <input id="license_plates_out" type="text" name="license_plates"
+                                        value="<?php echo set_value('license_plates') ?>" class="form-control"
+                                        placeholder="Biển số xe" autocomplete="off">
+                                    <?php echo form_error('Age') ?>
+                                </div>
+                                <!-- Thời gian ra -->
+                                <div class="form-group">
+                                    <label for="TimeOut">Thời gian ra</label>
+                                    <input id="TimeOut" type="text" name="TimeOut"
+                                        value="<?php echo set_value('TimeOut') ?>" class="form-control"
+                                        placeholder="Thời gian ra">
+                                    <?php echo form_error('TimeOut') ?>
+                                </div>
+                                <div hidden>
+                                    <!--Url Hình ảnh -->
+                                    <div class="form-group">
+                                        <label for="Image_License_Plate_Base64_out">Ảnh Biển số xe</label>
+                                        <input id="Image_License_Plate_Base64_out" type="text"
+                                            name="Image_License_Plate_Base64_out"
+                                            value="<?php echo set_value('Image_License_Plate_Base64') ?>"
+                                            class="form-control" placeholder="Ảnh Biển số xe">
+                                        <?php echo form_error('Image_License_Plate_Base64') ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Image_Face_Base64_out">Ảnh Khuôn mặt</label>
+                                        <input id="Image_Face_Base64_out" type="text" name="Image_Face_Base64_out"
+                                            value="<?php echo set_value('Image_Face_Base64') ?>" class="form-control"
+                                            placeholder="Ảnh khuôn mặt">
+                                        <?php echo form_error('Image_Face_Base64') ?>
+                                    </div>
+                                </div>
+                                <!-- Button thêm mới -->
+                                <?php echo form_error('homes') ?>
+                                <button type="submit" class="btn btn-success" name="btn-submit"
+                                    id="btn_addCarCheckOut">Kiểm tra
+                                    <!-- <a href="?mod=homes&action=addCar"></a> -->
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page-body end -->
+            </div>
+            <div id=" styleSelector_out">
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
+// ========== CỔNG VÀO ==========
 const myVideoInputs = [];
 var vidElement1 = null;
 var vidElement2 = null;
@@ -264,6 +409,14 @@ function loopArray() {
             text: myVideoInputs[i].label
         }));
         $('#VideoDeviceID2').append($('<option>', {
+            value: myVideoInputs[i].deviceId,
+            text: myVideoInputs[i].label
+        }));
+        $('#VideoDeviceID1_out').append($('<option>', {
+            value: myVideoInputs[i].deviceId,
+            text: myVideoInputs[i].label
+        }));
+        $('#VideoDeviceID2_out').append($('<option>', {
             value: myVideoInputs[i].deviceId,
             text: myVideoInputs[i].label
         }));
@@ -337,7 +490,7 @@ var RFIDinput = document.getElementById("RFIDcode");
 let canvas1 = document.querySelector("#canvas_video1");
 let canvas2 = document.querySelector("#canvas_video2");
 // Execute a function when the user presses a key on the keyboard
-RFIDinput.addEventListener("keypress", function(event) {
+RFIDinput.addEventListener("keypress", async function(event) {
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
         // Cancel the default action, if needed
@@ -354,19 +507,245 @@ RFIDinput.addEventListener("keypress", function(event) {
                 .height);
             canvas2.getContext('2d').drawImage(videoElement2, 0, 0, canvas2.width, canvas2
                 .height);
-            $("#license_plates").val("34A-00028");
-            let timeCheckIn = getTimeFormated();
-            // timeCheckIn = date('ss:mm:HH d/m/Y');
-            $('#TimeIn').val(timeCheckIn);
-            //btnSubmit.disabled = false;
-            let image_data_url_1 = canvas1.toDataURL('image/jpeg');
-            let image_data_url_2 = canvas2.toDataURL('image/jpeg');
-            $('#Image_License_Plate_Base64').val(image_data_url_1);
-            $('#Image_Face_Base64').val(image_data_url_2);
+            let image_data_ALPR = canvas1.toDataURL('image/jpeg');
+            let image_data_FACE = canvas2.toDataURL('image/jpeg');
+            // console.log(image_data_FACE);
+
+
+            // const responseALPR = await fetch('http://localhost:5000/lp_detect', {
+            //     method: 'POST',
+            //     body: JSON.stringify(data), // string or object
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // });
+            //const myALPR = responseALPR.json(); //extract JSON from the http response
+            // do something with myJson
+            //console.log(responseALPR);
+
+            // const responseFACE = await fetch('http://localhost:5001/face_register', {
+            //     method: 'POST',
+            //     body: JSON.stringify(data), // string or object
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // });
+            //const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // do something with myJson
+            // console.log(responseFACE);
+
+            // const fetch = require("node-fetch");
+            // const FormData = require("form-data");
+            // const fs = require("fs");
+
+            // let image_path = "/path/to/car.jpg";
+            let body = new FormData();
+            // body.append("upload", fs.createReadStream(image_path));
+            body.append('upload', image_data_ALPR);
+            body.append("regions", "vn"); // Change to your country
+            fetch("https://api.platerecognizer.com/v1/plate-reader/", {
+                    method: "POST",
+                    headers: {
+                        Authorization: "Token 618ab893ae006bf2c12031d9f44936584e6ad145",
+                    },
+                    body: body,
+                })
+                .then((res) => res.json())
+                .then((json) => {
+                    const plate = json?.results[0]?.plate;
+                    console.log(plate);
+                    $("#license_plates").val(plate);
+                    let timeCheckIn = getTimeFormated();
+                    // timeCheckIn = date('ss:mm:HH d/m/Y');
+                    $('#TimeIn').val(timeCheckIn);
+                    //btnSubmit.disabled = false;
+                    $('#Image_License_Plate_Base64').val(image_data_ALPR);
+                    $('#Image_Face_Base64').val(image_data_FACE);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    alert("ERROR: Không nhận dạng được biển số!");
+                    $("#RFIDcode").val("");
+                });
+
+            var data = {
+                RFIDcode: RFIDinput.value,
+                Image_License_Plate_Base64: image_data_ALPR,
+                LicensePlates: $("#license_plates").val(),
+                Image_Face_Base64: image_data_FACE,
+            };
+            const responseFACE = await fetch('http://localhost:5001/face_register', {
+                method: 'POST',
+                body: JSON.stringify(data), // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            // const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // do something with myJson
+            console.log(responseFACE);
         }
     }
 });
 
+// ========== CỔNG RA ==========
+// const myVideoInputs_out = [];
+var vidElement1_out = null;
+var vidElement2_out = null;
+// window.onload = async () => {
+//     await navigator.mediaDevices.enumerateDevices()
+//         .then(results => {
+//             //console.log(results);
+//             results.forEach(result => {
+//                 if (result.kind === 'videoinput') {
+//                     // console.log(result);
+//                     myVideoInputs_out.push(result);
+//                     // console.log(myVideoInputs);
+//                     // console.log(myVideoInputs.length);
+//                     loopArray_out();
+//                 }
+//             })
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+
+// function loopArray_out() {
+//     for (let i = 0; i < myVideoInputs_out.length; i++) {
+//         $('#VideoDeviceID1_out').append($('<option>', {
+//             value: myVideoInputs_out[i].deviceId,
+//             text: myVideoInputs_out[i].label
+//         }));
+//         $('#VideoDeviceID2_out').append($('<option>', {
+//             value: myVideoInputs_out[i].deviceId,
+//             text: myVideoInputs_out[i].label
+//         }));
+//     }
+// }
+
+const doStartCamera_out = (button) => {
+    const id = button.id;
+    switch (id) {
+        case 'startCamera1_out':
+            startCamera($('#VideoDeviceID1_out').val(), videoElement1_out);
+            break;
+        case 'startCamera2_out':
+            startCamera($('#VideoDeviceID2_out').val(), videoElement2_out);
+            break;
+    }
+}
+
+// const startCamera = async (myVideoInputID_out, whichCamera) => {
+//     if (myVideoInputID_out == 0) {
+//         alert("ERROR: Bạn cần chọn thiết bị Camera!!!");
+//         console.log('myVideoInput is undefined');
+//         return;
+//     }
+//     await navigator.mediaDevices.getUserMedia({
+//             video: {
+//                 deviceId: myVideoInputID_out,
+//             }
+//         })
+//         .then(stream => {
+//             whichCamera.srcObject = stream;
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+
+const doStopCamera_out = (button) => {
+    const id = button.id;
+    switch (id) {
+        case 'stopCamera1_out':
+            cleanUp(videoElement1_out);
+            break;
+        case 'stopCamera2_out':
+            cleanUp(videoElement2_out);
+            break;
+    }
+}
+
+// const cleanUp = (whichCamera) => {
+//     try {
+//         const stream = whichCamera.srcObject;
+//         const tracks = stream.getTracks();
+//         tracks.forEach(track => track.stop());
+//         whichCamera.srcObject = null;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+var RFIDinput_out = document.getElementById("RFIDcode_out");
+let canvas1_out = document.querySelector("#canvas_video1_out");
+let canvas2_out = document.querySelector("#canvas_video2_out");
+// Execute a function when the user presses a key on the keyboard
+RFIDinput_out.addEventListener("keypress", async function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        if (videoElement1_out.srcObject == null) {
+            alert("ERROR: Camera Biển số xe chưa được bật!!!");
+            $("#RFIDcode_out").val("");
+        } else if (videoElement2_out.srcObject == null) {
+            alert("ERROR: Camera Khuôn mặt chưa được bật!!!");
+            $("#RFIDcode_out").val("");
+        } else {
+            canvas1_out.getContext('2d').drawImage(videoElement1_out, 0, 0, canvas1.width, canvas1_out
+                .height);
+            canvas2_out.getContext('2d').drawImage(videoElement2_out, 0, 0, canvas2.width, canvas2_out
+                .height);
+            let image_data_ALPR_out = canvas1_out.toDataURL('image/jpeg');
+            let image_data_FACE_out = canvas2_out.toDataURL('image/jpeg');
+            // console.log(image_data_FACE);
+            var data_out = {
+                RFIDcode_out: RFIDinput_out.value,
+                Image_License_Plate_Base64_out: image_data_ALPR_out,
+                Image_Face_Base64_out: image_data_FACE_out,
+            };
+
+            // const responseALPR = await fetch('http://localhost:5000/lp_detect', {
+            //     method: 'POST',
+            //     body: JSON.stringify(data), // string or object
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // });
+            //const myALPR = responseALPR.json(); //extract JSON from the http response
+            // do something with myJson
+            //console.log(responseALPR);
+
+            const responseFACE_out = await fetch('http://localhost:5001/face_checkFace', {
+                method: 'POST',
+                body: JSON.stringify(data_out), // string or object
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            //const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // do something with myJson
+            console.log(responseFACE_out);
+
+
+            $("#license_plates_out").val("34A-00028");
+            let timeCheckOut = getTimeFormated();
+            // timeCheckIn = date('ss:mm:HH d/m/Y');
+            $('#TimeOut').val(timeCheckOut);
+            //btnSubmit.disabled = false;
+
+            $('#Image_License_Plate_Base64_out').val(image_data_ALPR_out);
+            $('#Image_Face_Base64_out').val(image_data_FACE_out);
+        }
+    }
+});
+
+// const ALPRAction = async () => {
+
+// }
 
 
 // var vidElement1 = null;
