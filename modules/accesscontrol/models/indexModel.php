@@ -3,7 +3,7 @@
 //Lấy danh sách thông tin các lượt vào-ra
 function get_info_accesscontrols()
 {
-    $accesscontrols = db_fetch_array("SELECT AC.ID, cardrfid.CardNumber, AC.LicensePlates, AC.TimeIn, AC.TimeOut, client.Name
+    $accesscontrols = db_fetch_array("SELECT AC.ID, cardrfid.CardNumber, AC.LicensePlates,AC.FaceID, AC.TimeIn, AC.TimeOut, client.Name
     FROM `accesscontrol` as AC
         LEFT JOIN `client` on AC.ClientID = client.ID
         LEFT JOIN `cardrfid` on AC.CardID = cardrfid.ID

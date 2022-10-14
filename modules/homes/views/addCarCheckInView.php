@@ -17,6 +17,6 @@ $data1 = array(
 db_insert('accesscontrol', $data1);
 
 $data = array(
-    'status' => 'addad',
+    'status' => true,
 );
 echo json_encode($data);

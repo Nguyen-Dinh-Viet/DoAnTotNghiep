@@ -839,11 +839,11 @@ $(document).ready(function () {
       success: function (data) {
         //xử lí dữ liệu trả về
         if (data["status"]) {
-          alert(strDate);
+          // alert(strDate);
           alert("Xe vào thành công");
           location.reload();
         } else {
-          alert("Có lỗi xảy ra!");
+          alert("ERROR: Có lỗi xảy ra!");
         }
       },
       error: function (
@@ -851,7 +851,7 @@ $(document).ready(function () {
         ajaxOptions,
         thrownError //
       ) {
-        alert("loi");
+        alert("ERROR: Có lỗi xảy ra!");
         alert(xhr.status);
         alert(thrownError);
       },

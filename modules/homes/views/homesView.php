@@ -236,8 +236,8 @@
                                 </div>
                                 <!-- Button thêm mới -->
                                 <?php echo form_error('homes') ?>
-                                <button type="submit" class="btn btn-success" name="btn-submit"
-                                    id="btn_addCarCheckIn">Thêm
+                                <button class="button-3" type="submit" disabled class="btn btn-success"
+                                    name="btn-submit" id="btn_addCarCheckIn">Thêm
                                     mới
                                     <!-- <a href="?mod=homes&action=addCar"></a> -->
                                 </button>
@@ -317,7 +317,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card-block" id="CarCheckIn">
+                            <div class="card-block" id="CarCheckOut">
                                 <!-- Mã thẻ RFID -->
                                 <div class="form-group">
                                     <label for="RFIDcode_out">Mã thẻ RFID</label>
@@ -362,8 +362,8 @@
                                 </div>
                                 <!-- Button thêm mới -->
                                 <?php echo form_error('homes') ?>
-                                <button type="submit" class="btn btn-success" name="btn-submit"
-                                    id="btn_addCarCheckOut">Kiểm tra
+                                <button class="button-3" type="submit" disabled class="btn btn-success"
+                                    name="btn-submit" id="btn_addCarCheckOut">Kiểm tra
                                     <!-- <a href="?mod=homes&action=addCar"></a> -->
                                 </button>
                             </div>
@@ -379,6 +379,7 @@
 </div>
 
 <script>
+// document.getElementById("btn_addCarCheckIn").attr('disabled', 'disabled');
 // ========== CỔNG VÀO ==========
 const myVideoInputs = [];
 var vidElement1 = null;
@@ -489,6 +490,7 @@ function getTimeFormated() {
 var RFIDinput = document.getElementById("RFIDcode");
 let canvas1 = document.querySelector("#canvas_video1");
 let canvas2 = document.querySelector("#canvas_video2");
+var license;
 // Execute a function when the user presses a key on the keyboard
 RFIDinput.addEventListener("keypress", async function(event) {
     // If the user presses the "Enter" key on the keyboard
@@ -543,47 +545,72 @@ RFIDinput.addEventListener("keypress", async function(event) {
             // body.append("upload", fs.createReadStream(image_path));
             body.append('upload', image_data_ALPR);
             body.append("regions", "vn"); // Change to your country
-            fetch("https://api.platerecognizer.com/v1/plate-reader/", {
-                    method: "POST",
-                    headers: {
-                        Authorization: "Token 618ab893ae006bf2c12031d9f44936584e6ad145",
-                    },
-                    body: body,
-                })
-                .then((res) => res.json())
-                .then((json) => {
-                    const plate = json?.results[0]?.plate;
-                    console.log(plate);
-                    $("#license_plates").val(plate);
-                    let timeCheckIn = getTimeFormated();
-                    // timeCheckIn = date('ss:mm:HH d/m/Y');
-                    $('#TimeIn').val(timeCheckIn);
-                    //btnSubmit.disabled = false;
-                    $('#Image_License_Plate_Base64').val(image_data_ALPR);
-                    $('#Image_Face_Base64').val(image_data_FACE);
-                })
-                .catch((err) => {
-                    console.log(err);
-                    alert("ERROR: Không nhận dạng được biển số!");
-                    $("#RFIDcode").val("");
-                });
-
-            var data = {
-                RFIDcode: RFIDinput.value,
-                Image_License_Plate_Base64: image_data_ALPR,
-                LicensePlates: $("#license_plates").val(),
-                Image_Face_Base64: image_data_FACE,
-            };
-            const responseFACE = await fetch('http://localhost:5001/face_register', {
-                method: 'POST',
-                body: JSON.stringify(data), // string or object
+            const data_response = await fetch("https://api.platerecognizer.com/v1/plate-reader/", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            // const myFACE = await responseFACE.json(); //extract JSON from the http response
-            // do something with myJson
-            console.log(responseFACE);
+                    Authorization: "Token 618ab893ae006bf2c12031d9f44936584e6ad145",
+                },
+                body: body,
+            })
+            console.log(data_response.json());
+            const reponseALPR = await data_response.json();
+            console.log(reponseALPR);
+            // const response_ALPR = data_response?.json()?.results[0];
+
+            // if (response_ALPR != null) {
+            //     const plate = response_ALPR.plate;
+            //     $("#license_plates").val(plate);
+            //     let timeCheckIn = getTimeFormated();
+            //     // timeCheckIn = date('ss:mm:HH d/m/Y');
+            //     $('#TimeIn').val(timeCheckIn);
+            //     //btnSubmit.disabled = false;
+            //     $('#Image_License_Plate_Base64').val(image_data_ALPR);
+            //     $('#Image_Face_Base64').val(image_data_FACE);
+            // } else {
+            //     alert("ERROR: Không nhận dạng được biển số!");
+            //     $("#RFIDcode").val("");
+            // }
+            // .then((res) => res.json())
+            // .then((json) => {
+            //     const plate = json?.results[0]?.plate;
+            //     // console.log(plate);
+            //     // license = plate;
+            //     $("#license_plates").val(plate);
+            //     let timeCheckIn = getTimeFormated();
+            //     // timeCheckIn = date('ss:mm:HH d/m/Y');
+            //     $('#TimeIn').val(timeCheckIn);
+            //     //btnSubmit.disabled = false;
+            //     $('#Image_License_Plate_Base64').val(image_data_ALPR);
+            //     $('#Image_Face_Base64').val(image_data_FACE);
+            // })
+            // .catch((err) => {
+            //     console.log(err);
+            //     alert("ERROR: Không nhận dạng được biển số!");
+            //     $("#RFIDcode").val("");
+            // });
+            //var license = $("#license_plates").val();
+            // console.log(license);
+            // var data = {
+            //     RFIDcode: RFIDinput.value,
+            //     Image_License_Plate_Base64: image_data_ALPR,
+            //     LicensePlates: license,
+            //     Image_Face_Base64: image_data_FACE,
+            // };
+            // const responseFACE = await fetch('http://localhost:5001/face_register', {
+            //     method: 'POST',
+            //     body: JSON.stringify(data), // string or object
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // });
+            // // const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // // do something with myJson
+            // // console.log(responseFACE);
+            // if (responseFACE.status === true) {
+            //     $('#btn_addCarCheckIn').removeAttr('disabled');
+            // } else {
+            //     alert('ERROR: Có lỗi xảy ra!!!');
+            // }
         }
     }
 });
