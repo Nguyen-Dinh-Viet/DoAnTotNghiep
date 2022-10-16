@@ -14,6 +14,10 @@ function addCarCheckInAction()
 {
     load_view('addCarCheckIn');
 }
+function addCarCheckOutAction()
+{
+    load_view('addCarCheckOut');
+}
 function addCarAction()
 {
     global $RFIDcode, $license_plates, $ImageLicensePlates, $ImageFace, $Image_License_Plate_Base64, $Image_Face_Base64, $TimeIn;

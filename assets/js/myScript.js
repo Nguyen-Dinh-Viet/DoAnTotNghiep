@@ -857,4 +857,73 @@ $(document).ready(function () {
       },
     });
   });
+
+  // Sự kiện kiểm tra xe khi ra
+  $("#CarCheckOut #btn_addCarCheckOut").click(function () {
+    if ($("input#RFIDcode_out").val() == 0) {
+      $("p#RFIDcode_out").text("Vui lòng nhập mã thẻ RFID!");
+      return;
+    }
+    if ($("input#license_plates_out").val() == 0) {
+      $("p#license_plates_out").text("Vui lòng nhập Biển số xe!");
+      return;
+    }
+    if ($("input#TimeOut").val() == 0) {
+      $("p#TimeOut").text("Vui lòng nhập thời gian vào!");
+      return;
+    }
+    let timeInConvert = new Date();
+    let strDate =
+      timeInConvert.getFullYear() +
+      "-" +
+      ("00" + (timeInConvert.getMonth() + 1)).slice(-2) +
+      "-" +
+      ("00" + timeInConvert.getDate()).slice(-2) +
+      " " +
+      ("00" + timeInConvert.getHours()).slice(-2) +
+      ":" +
+      ("00" + timeInConvert.getMinutes()).slice(-2) +
+      ":" +
+      ("00" + timeInConvert.getSeconds()).slice(-2);
+    var data = {
+      // ssdsd: "ádasd",
+      RFIDcode_out: $("input#RFIDcode_out").val(),
+      license_plates_out: $("input#license_plates_out").val(),
+      TimeOut: strDate,
+      // Image_License_Plate_Base64_out: $(
+      //   "input#Image_License_Plate_Base64_out"
+      // ).val(),
+      // Image_Face_Base64_out: $("input#Image_Face_Base64_out").val(),
+    };
+    console.log($("input#license_plates_out").val());
+    $.ajax({
+      url: "?mod=homes&action=addCarCheckOut", //Trang xử lý, mặc định trang hiện tại
+      method: "POST", //post hoặc get, mặc định là get
+      data: data, // dữ liệu truyền lên server
+      dataType: "json", // html ,text,script hoặc json
+
+      success: function (data) {
+        //xử lí dữ liệu trả về
+        if (data["status"] == "NoCardID") {
+          alert("ERROR: Thẻ RFID không tồn tại!");
+        } else if (data["status"] == "LicensePlateUnvalid") {
+          alert("ERROR: Không Tồn Tại biển số xe !");
+        } else if (data["status"] == "WrongLicensePlate") {
+          alert("ERROR: Biển số xe SAI!");
+        } else {
+          alert("Xe ra thành công");
+          location.reload();
+        }
+      },
+      error: function (
+        xhr,
+        ajaxOptions,
+        thrownError //
+      ) {
+        alert("ERROR: Có lỗi. Kiểm tra không thành công!");
+        alert(xhr.status);
+        alert(thrownError);
+      },
+    });
+  });
 });

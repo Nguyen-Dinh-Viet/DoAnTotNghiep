@@ -551,25 +551,55 @@ RFIDinput.addEventListener("keypress", async function(event) {
                     Authorization: "Token 618ab893ae006bf2c12031d9f44936584e6ad145",
                 },
                 body: body,
-            })
-            console.log(data_response.json());
-            const reponseALPR = await data_response.json();
-            console.log(reponseALPR);
+            }).then(response => response.json());
+
+            // data_response.then(function(getData) {
+            //     metaData = getData;
+            // });
+            // console.log(data_response.results);
+            // console.log(data_response.then(function(result)
+            // const reponseALPR = await data_response.json();
+            // console.log(reponseALPR);
             // const response_ALPR = data_response?.json()?.results[0];
 
-            // if (response_ALPR != null) {
-            //     const plate = response_ALPR.plate;
-            //     $("#license_plates").val(plate);
-            //     let timeCheckIn = getTimeFormated();
-            //     // timeCheckIn = date('ss:mm:HH d/m/Y');
-            //     $('#TimeIn').val(timeCheckIn);
-            //     //btnSubmit.disabled = false;
-            //     $('#Image_License_Plate_Base64').val(image_data_ALPR);
-            //     $('#Image_Face_Base64').val(image_data_FACE);
-            // } else {
-            //     alert("ERROR: Không nhận dạng được biển số!");
-            //     $("#RFIDcode").val("");
-            // }
+            if (data_response.results.length != 0) {
+                const plate = data_response.results[0].plate;
+                $("#license_plates").val(plate);
+                let timeCheckIn = getTimeFormated();
+                // timeCheckIn = date('ss:mm:HH d/m/Y');
+                $('#TimeIn').val(timeCheckIn);
+                //btnSubmit.disabled = false;
+                $('#Image_License_Plate_Base64').val(image_data_ALPR);
+                $('#Image_Face_Base64').val(image_data_FACE);
+
+                var license = $("#license_plates").val();
+                // console.log(license);
+                var data = {
+                    RFIDcode: RFIDinput.value,
+                    Image_License_Plate_Base64: image_data_ALPR,
+                    LicensePlates: license,
+                    Image_Face_Base64: image_data_FACE,
+                };
+                const responseFACE = await fetch('http://localhost:5001/face_register', {
+                    method: 'POST',
+                    body: JSON.stringify(data), // string or object
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json());
+                // // const myFACE = await responseFACE.json(); //extract JSON from the http response
+                // // do something with myJson
+                console.log(responseFACE.status);
+                if (responseFACE.status == "true") {
+                    $('#btn_addCarCheckIn').removeAttr('disabled');
+                } else {
+                    alert('ERROR: Không nhận diện được khuôn mặt!!!');
+                }
+            } else {
+                alert("ERROR: Không nhận dạng được biển số!");
+                $("#RFIDcode").val("");
+            }
+            // console.log($("#license_plates").val());
             // .then((res) => res.json())
             // .then((json) => {
             //     const plate = json?.results[0]?.plate;
@@ -588,8 +618,8 @@ RFIDinput.addEventListener("keypress", async function(event) {
             //     alert("ERROR: Không nhận dạng được biển số!");
             //     $("#RFIDcode").val("");
             // });
-            //var license = $("#license_plates").val();
-            // console.log(license);
+            // var license = $("#license_plates").val();
+            // // console.log(license);
             // var data = {
             //     RFIDcode: RFIDinput.value,
             //     Image_License_Plate_Base64: image_data_ALPR,
@@ -603,9 +633,9 @@ RFIDinput.addEventListener("keypress", async function(event) {
             //         'Content-Type': 'application/json'
             //     }
             // });
-            // // const myFACE = await responseFACE.json(); //extract JSON from the http response
-            // // do something with myJson
-            // // console.log(responseFACE);
+            // // // const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // // // do something with myJson
+            // // // console.log(responseFACE);
             // if (responseFACE.status === true) {
             //     $('#btn_addCarCheckIn').removeAttr('disabled');
             // } else {
@@ -728,44 +758,89 @@ RFIDinput_out.addEventListener("keypress", async function(event) {
                 .height);
             let image_data_ALPR_out = canvas1_out.toDataURL('image/jpeg');
             let image_data_FACE_out = canvas2_out.toDataURL('image/jpeg');
-            // console.log(image_data_FACE);
-            var data_out = {
-                RFIDcode_out: RFIDinput_out.value,
-                Image_License_Plate_Base64_out: image_data_ALPR_out,
-                Image_Face_Base64_out: image_data_FACE_out,
-            };
 
-            // const responseALPR = await fetch('http://localhost:5000/lp_detect', {
+            let body = new FormData();
+            // body.append("upload", fs.createReadStream(image_path));
+            body.append('upload', image_data_ALPR_out);
+            body.append("regions", "vn"); // Change to your country
+            const data_response = await fetch("https://api.platerecognizer.com/v1/plate-reader/", {
+                method: "POST",
+                headers: {
+                    Authorization: "Token 618ab893ae006bf2c12031d9f44936584e6ad145",
+                },
+                body: body,
+            }).then(response => response.json());
+            if (data_response.results.length != 0) {
+                const plate = data_response.results[0].plate;
+                $("#license_plates_out").val(plate);
+                let timeCheckOut = getTimeFormated();
+                // timeCheckIn = date('ss:mm:HH d/m/Y');
+                $('#TimeOut').val(timeCheckOut);
+                //btnSubmit.disabled = false;
+                $('#Image_License_Plate_Base64_out').val(image_data_ALPR_out);
+                $('#Image_Face_Base64_out').val(image_data_FACE_out);
+
+                var license_out = $("#license_plates_out").val();
+                // console.log(license_out);
+                var data_out = {
+                    RFIDcode: RFIDinput_out.value,
+                    Image_License_Plate_Base64_out: image_data_ALPR_out,
+                    LicensePlates_out: license_out,
+                    Image_Face_Base64_out: image_data_FACE_out,
+                };
+                const responseFACE_out = await fetch('http://localhost:5001/face_checkFace', {
+                    method: 'POST',
+                    body: JSON.stringify(data_out), // string or object
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json());
+                //const myFACE = await responseFACE.json(); //extract JSON from the http response
+                // do something with myJson
+                // console.log(responseFACE_out.status);
+
+
+                if (responseFACE_out.status == license_out) {
+                    $('#btn_addCarCheckOut').removeAttr('disabled');
+                } else {
+                    alert('ERROR: Không nhận dạng được khuôn mặt!!!');
+                }
+            } else {
+                alert("ERROR: Không nhận diện được biển số!");
+                $("#RFIDcode_out").val("");
+            }
+
+
+
+
+
+            // console.log(image_data_FACE);
+            // var data_out = {
+            //     RFIDcode_out: RFIDinput_out.value,
+            //     Image_License_Plate_Base64_out: image_data_ALPR_out,
+            //     Image_Face_Base64_out: image_data_FACE_out,
+            // };
+
+            // const responseFACE_out = await fetch('http://localhost:5001/face_checkFace', {
             //     method: 'POST',
-            //     body: JSON.stringify(data), // string or object
+            //     body: JSON.stringify(data_out), // string or object
             //     headers: {
             //         'Content-Type': 'application/json'
             //     }
             // });
-            //const myALPR = responseALPR.json(); //extract JSON from the http response
-            // do something with myJson
-            //console.log(responseALPR);
-
-            const responseFACE_out = await fetch('http://localhost:5001/face_checkFace', {
-                method: 'POST',
-                body: JSON.stringify(data_out), // string or object
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            //const myFACE = await responseFACE.json(); //extract JSON from the http response
-            // do something with myJson
-            console.log(responseFACE_out);
+            // //const myFACE = await responseFACE.json(); //extract JSON from the http response
+            // // do something with myJson
+            // console.log(responseFACE_out);
 
 
-            $("#license_plates_out").val("34A-00028");
-            let timeCheckOut = getTimeFormated();
-            // timeCheckIn = date('ss:mm:HH d/m/Y');
-            $('#TimeOut').val(timeCheckOut);
-            //btnSubmit.disabled = false;
+            // $("#license_plates_out").val("34A-00028");
+            // let timeCheckOut = getTimeFormated();
+            // // timeCheckIn = date('ss:mm:HH d/m/Y');
+            // $('#TimeOut').val(timeCheckOut);
+            // //btnSubmit.disabled = false;
 
-            $('#Image_License_Plate_Base64_out').val(image_data_ALPR_out);
-            $('#Image_Face_Base64_out').val(image_data_FACE_out);
+            // $('#Image_License_Plate_Base64_out').val(image_data_ALPR_out);
+            // $('#Image_Face_Base64_out').val(image_data_FACE_out);
         }
     }
 });
