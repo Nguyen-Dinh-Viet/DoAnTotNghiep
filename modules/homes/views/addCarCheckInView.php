@@ -8,7 +8,7 @@ $cardID = db_fetch_row("SELECT cardrfid.ID FROM `cardrfid` WHERE `cardNumber` = 
 $data1 = array(
     'CardID' => $cardID['ID'],
     'LicensePlates' => $license_plates,
-    // 'Image_License_Plate_Base64' => $Image_License_Plate_Base64,
+    'LicensePlateID' => $Image_License_Plate_Base64,
     'FaceID' => $Image_Face_Base64,
     'TimeIn' => $TimeIn,
     // 'TimeOut' => $TimeIn,

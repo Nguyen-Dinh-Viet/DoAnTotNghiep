@@ -6,7 +6,7 @@ $TimeOut = $_POST['TimeOut'];
 // $Image_Face_Base64 = $_POST['Image_Face_Base64_out'];
 // Tìm thẻ RFID có tồn tại
 $cardID = db_fetch_row("SELECT cardrfid.ID FROM `cardrfid` WHERE `cardNumber` = {$RFIDcode}");
-if ($cardID == null) {
+if ($cardID['ID'] == null) {
     $data = array(
         'status' => "NoCardID",
     );
@@ -17,7 +17,7 @@ if ($cardID == null) {
                 WHERE AC.TimeOut = '' AND AC.CardID = cardrfid.ID AND cardrfid.CardNumber = {$RFIDcode}";
     $license_check = db_fetch_array($query);
     // nếu không tồn tại
-    if ($license_check[0]['LicensePlates'] == null) {
+    if (count($license_check) == 0) {
         $data = array(
             'status' => "LicensePlateUnvalid",
         );

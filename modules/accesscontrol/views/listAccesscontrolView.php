@@ -33,6 +33,44 @@ function base64_to_jpeg($base64_string, $output_file)
     return $output_file;
 }
 ?>
+<style>
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+</style>
 <div class="pcoded-content">
     <!-- Page-header start -->
     <div class="page-header">
@@ -91,6 +129,12 @@ function base64_to_jpeg($base64_string, $output_file)
                                     <form method="POST">
                                         <div class="d-flex mb-3" style="justify-content: space-between;">
                                             <div class="form-inline mr-4">
+                                                <label for="LicensePlateSearch" class="mr-2"
+                                                    style="font-weight:600;">Biển
+                                                    số</label>
+                                                <input class="form-control" type="text" name="LicensePlateSearch"
+                                                    id="LicensePlateSearch"
+                                                    value="<?php echo set_value('LicensePlateSearch') ?>">
                                                 <!--<label for="cat_id" style="font-weight:600;">Thu/Chi</label>
                                                 <select value="<?php #echo set_value('cat_id') 
                                                                 ?>" id="cat_id"
@@ -137,23 +181,23 @@ function base64_to_jpeg($base64_string, $output_file)
                                                     value="<?php echo set_value('to') ?>">
                                             </div>
                                             <?php echo form_error('date') ?>
-                                            <button type="submit" name="btn-search-report" id="btn-search-report"
+                                            <button type="submit" name="btn-search-report" id="btn-search-accesscontrol"
                                                 class="btn btn-success">Tìm kiếm</button>
                                         </div>
                                     </form>
                                     <div class="table-responsive">
-                                        <table class="table table-hover" style="text-align: center;">
+                                        <table class="table table-hover styled-table" style="text-align: center;">
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Thời gian vào</th>
-                                                    <th>Thời gian ra</th>
-                                                    <th>Biển số xe</th>
-                                                    <th>Số thẻ</th>
-                                                    <th>Họ Tên(nếu có)</th>
+                                                    <th style="width: 11%">Thời gian vào</th>
+                                                    <th style="width: 10%">Thời gian ra</th>
+                                                    <th style="width: 9%">Biển số xe</th>
+                                                    <th style="width: 9%">Số thẻ</th>
+                                                    <th>Ảnh biển số</th>
                                                     <th>Khuôn mặt</th>
                                                     <!-- <th>Biển số</th> -->
-                                                    <th>Thao tác</th>
+                                                    <th style="width: 9%">Thao tác</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -167,10 +211,13 @@ function base64_to_jpeg($base64_string, $output_file)
                                                     <td><?php echo $item['TimeOut'] ?></td>
                                                     <td><?php echo $item['LicensePlates'] ?></td>
                                                     <td><?php echo $item['CardNumber'] ?></td>
-                                                    <td><?php echo $item['Name'] ?></td>
                                                     <td>
-                                                        <img
-                                                            src="<?php echo base64_to_jpeg($item['FaceID'], 'tmp.jpg') ?>">
+                                                        <img style="width:100%"
+                                                            src="<?php echo base64_to_jpeg($item['LicensePlateID'], $item['CardNumber'] . ".jpg") ?>">
+                                                    </td>
+                                                    <td>
+                                                        <img style="width:100%"
+                                                            src="<?php echo base64_to_jpeg($item['FaceID'], $item['LicensePlates'] . ".jpg") ?>">
                                                     </td>
                                                     <td class="">
                                                         <a class="mr-2" title="Xem chi tiết"

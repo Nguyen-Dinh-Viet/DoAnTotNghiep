@@ -348,15 +348,15 @@
                                         <label for="Image_License_Plate_Base64_out">Ảnh Biển số xe</label>
                                         <input id="Image_License_Plate_Base64_out" type="text"
                                             name="Image_License_Plate_Base64_out"
-                                            value="<?php echo set_value('Image_License_Plate_Base64') ?>"
+                                            value="<?php echo set_value('Image_License_Plate_Base64_out') ?>"
                                             class="form-control" placeholder="Ảnh Biển số xe">
                                         <?php echo form_error('Image_License_Plate_Base64') ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="Image_Face_Base64_out">Ảnh Khuôn mặt</label>
                                         <input id="Image_Face_Base64_out" type="text" name="Image_Face_Base64_out"
-                                            value="<?php echo set_value('Image_Face_Base64') ?>" class="form-control"
-                                            placeholder="Ảnh khuôn mặt">
+                                            value="<?php echo set_value('Image_Face_Base64_out') ?>"
+                                            class="form-control" placeholder="Ảnh khuôn mặt">
                                         <?php echo form_error('Image_Face_Base64') ?>
                                     </div>
                                 </div>
@@ -392,6 +392,15 @@ window.onload = async () => {
                 if (result.kind === 'videoinput') {
                     // console.log(result);
                     myVideoInputs.push(result);
+                    $("#RFIDcode").val("");
+                    $("#license_plates").val("");
+                    $("#Image_License_Plate_Base64").val("");
+                    $("#Image_Face_Base64").val("");
+                    $("#RFIDcode_out").val("");
+                    $("#license_plates_out").val("");
+                    $("#Image_License_Plate_Base64_out").val("");
+                    $("#Image_Face_Base64_out").val("");
+                    $("#TimeOut").val("");
                     // console.log(myVideoInputs);
                     // console.log(myVideoInputs.length);
                     loopArray();
@@ -402,7 +411,7 @@ window.onload = async () => {
             console.log(error);
         });
 }
-
+// Ví dụ
 function loopArray() {
     for (let i = 0; i < myVideoInputs.length; i++) {
         $('#VideoDeviceID1').append($('<option>', {
@@ -594,10 +603,30 @@ RFIDinput.addEventListener("keypress", async function(event) {
                     $('#btn_addCarCheckIn').removeAttr('disabled');
                 } else {
                     alert('ERROR: Không nhận diện được khuôn mặt!!!');
+                    $("input#RFIDcode").val("");
+                    $("input#license_plates").val("");
+                    $("input#Image_License_Plate_Base64").val("");
+                    $("input#Image_Face_Base64").val("");
+                    $("input#TimeIn").val("");
+                    $("input#RFIDcode_out").val("");
+                    $("input#license_plates_out").val("");
+                    $("input#Image_License_Plate_Base64_out").val("");
+                    $("input#Image_Face_Base64_out").val("");
+                    $("input#TimeOut").val("");
                 }
             } else {
                 alert("ERROR: Không nhận dạng được biển số!");
-                $("#RFIDcode").val("");
+                // $("#RFIDcode").val("");
+                $("input#RFIDcode").val("");
+                $("input#license_plates").val("");
+                $("input#Image_License_Plate_Base64").val("");
+                $("input#Image_Face_Base64").val("");
+                $("input#TimeIn").val("");
+                $("input#RFIDcode_out").val("");
+                $("input#license_plates_out").val("");
+                $("input#Image_License_Plate_Base64_out").val("");
+                $("input#Image_Face_Base64_out").val("");
+                $("input#TimeOut").val("");
             }
             // console.log($("#license_plates").val());
             // .then((res) => res.json())
@@ -804,10 +833,28 @@ RFIDinput_out.addEventListener("keypress", async function(event) {
                     $('#btn_addCarCheckOut').removeAttr('disabled');
                 } else {
                     alert('ERROR: Không nhận dạng được khuôn mặt!!!');
+                    $("input#RFIDcode").val("");
+                    $("input#license_plates").val("");
+                    $("input#Image_License_Plate_Base64").val("");
+                    $("input#Image_Face_Base64").val("");
+                    $("input#RFIDcode_out").val("");
+                    $("input#license_plates_out").val("");
+                    $("input#Image_License_Plate_Base64_out").val("");
+                    $("input#Image_Face_Base64_out").val("");
+                    $("input#TimeOut").val("");
                 }
             } else {
                 alert("ERROR: Không nhận diện được biển số!");
-                $("#RFIDcode_out").val("");
+                // $("#RFIDcode_out").val("");
+                $("input#RFIDcode").val("");
+                $("input#license_plates").val("");
+                $("input#Image_License_Plate_Base64").val("");
+                $("input#Image_Face_Base64").val("");
+                $("input#RFIDcode_out").val("");
+                $("input#license_plates_out").val("");
+                $("input#Image_License_Plate_Base64_out").val("");
+                $("input#Image_Face_Base64_out").val("");
+                $("input#TimeOut").val("");
             }
 
 

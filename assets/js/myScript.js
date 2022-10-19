@@ -820,11 +820,11 @@ $(document).ready(function () {
       ("00" + timeInConvert.getSeconds()).slice(-2);
     var data = {
       // ssdsd: "ádasd",
-      RFIDcode: $("input#RFIDcode").val(),
-      license_plates: $("input#license_plates").val(),
+      RFIDcode: $("#RFIDcode").val(),
+      license_plates: $("#license_plates").val(),
       TimeIn: strDate,
-      Image_License_Plate_Base64: $("input#Image_License_Plate_Base64").val(),
-      Image_Face_Base64: $("input#Image_Face_Base64").val(),
+      Image_License_Plate_Base64: $("#Image_License_Plate_Base64").val(),
+      Image_Face_Base64: $("#Image_Face_Base64").val(),
     };
     // alert(data["RFIDcode"]);
     // alert(data["license_plates"]);
@@ -841,6 +841,10 @@ $(document).ready(function () {
         if (data["status"]) {
           // alert(strDate);
           alert("Xe vào thành công");
+          $("input#RFIDcode").val("");
+          $("input#license_plates").val("");
+          $("input#Image_License_Plate_Base64").val("");
+          $("input#Image_Face_Base64").val("");
           location.reload();
         } else {
           alert("ERROR: Có lỗi xảy ra!");
@@ -907,11 +911,15 @@ $(document).ready(function () {
         if (data["status"] == "NoCardID") {
           alert("ERROR: Thẻ RFID không tồn tại!");
         } else if (data["status"] == "LicensePlateUnvalid") {
-          alert("ERROR: Không Tồn Tại biển số xe !");
+          alert("ERROR: Không Tồn Tại biển số xe theo thẻ RFID này!");
         } else if (data["status"] == "WrongLicensePlate") {
           alert("ERROR: Biển số xe SAI!");
         } else {
           alert("Xe ra thành công");
+          $("input#RFIDcode_out").val("");
+          $("input#license_plates_out").val("");
+          $("input#Image_License_Plate_Base64_out").val("");
+          $("input#Image_Face_Base64_out").val("");
           location.reload();
         }
       },
@@ -921,8 +929,8 @@ $(document).ready(function () {
         thrownError //
       ) {
         alert("ERROR: Có lỗi. Kiểm tra không thành công!");
-        alert(xhr.status);
-        alert(thrownError);
+        // alert(xhr.status);
+        // alert(thrownError);
       },
     });
   });

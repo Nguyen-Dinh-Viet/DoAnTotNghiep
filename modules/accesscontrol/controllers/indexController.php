@@ -10,6 +10,36 @@ function construct()
 function listAccesscontrolAction()
 {
     $data['accesscontrols'] = get_info_accesscontrols();
+    // if (isset($_POST['btn-search-accesscontrol'])) {
+    //     $error = array();
+    //     if (empty($_POST['LicensePlateSearch']) && empty($_POST['from_date']) && empty($_POST['to_date'])) {
+    //         $error['errorNull'] = "Mời bạn nhập thông tin tìm kiếm!";
+    //     } elseif (empty($_POST['from_date']) && empty($_POST['to_date'])) {
+    //         $LicensePlateSearch = $_POST['LicensePlateSearch'];
+    //     }
+    //     if (empty($_POST['from_date'])) {
+    //         $error['date'] = "Xin mời bạn chọn ngày!";
+    //     } else {
+    //         $from = $_POST['from_date'];
+    //     }
+    //     if (empty($_POST['to_date'])) {
+    //         $error['date'] = "Xin mời bạn chọn ngày!";
+    //     } else {
+    //         $to = $_POST['to_date'];
+    //     }
+    //     if (empty($error)) {
+    //         $data_all = get_list_info_general($LicensePlateSearch, $ship_id, $from, $to);
+    //         foreach ($data_all as $item) {
+    //             # code...
+    //             if ($item['currency'] == '1') {
+    //                 $data['sum_vnd'] = $data['sum_vnd'] + $item['tien_vnd'];
+    //             } else {
+    //                 $data['sum_usd'] = $data['sum_usd'] + $item['tien_usd'];
+    //             }
+    //         }
+    //         $data['data'] = $data_all;
+    //     }
+    // }
     load_view("listAccesscontrol", $data);
 }
 
